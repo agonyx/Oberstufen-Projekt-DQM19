@@ -8,4 +8,3 @@ import { Component, VERSION } from '@angular/core';
 export class AppComponent  {
   name = 'Angular ' + VERSION.major;
 }
-// hithrtz
