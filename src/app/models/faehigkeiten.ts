@@ -1,3 +1,3 @@
 export class Faehigkeiten {
-  constructor(Eg1: number, Eg2: number, Eg3: number){}
+  constructor(Eg1: string, Eg2: string, Eg3: string){}
 }
