@@ -7,10 +7,16 @@ import { HelloComponent } from './hello.component';
 import { ChatroomComponent } from './chatroom/chatroom.component';
 import { MessageComponent } from './message/message.component';
 import { UserItemComponent } from './user-item/user-item.component';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+import {ChatService} from "./services/chat.service";
+
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ],
+  imports:      [ BrowserModule, FormsModule, AngularFireModule, AngularFireDatabaseModule ],
   declarations: [ AppComponent, HelloComponent, ChatroomComponent, MessageComponent, UserItemComponent ],
-  bootstrap:    [ AppComponent ]
+  bootstrap:    [ AppComponent ],
+  providers: [ChatService]
 })
 export class AppModule { }
