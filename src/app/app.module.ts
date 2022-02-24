@@ -13,12 +13,15 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import {ChatService} from "./services/chat.service";
 import { UserListComponent } from './user-list/user-list.component';
+import { MainMenuComponent } from './components/main-menu/main-menu.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, AngularFireModule, AngularFireDatabaseModule ],
-  declarations: [ AppComponent, HelloComponent, ChatroomComponent, MessageComponent, UserItemComponent, UserListComponent ],
+  imports:      [ BrowserModule, FormsModule, AngularFireModule, AngularFireDatabaseModule, AppRoutingModule ],
+  declarations: [ AppComponent, HelloComponent,MainMenuComponent, ChatroomComponent, MessageComponent, UserItemComponent, UserListComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ChatService]
+
 })
 export class AppModule { }
