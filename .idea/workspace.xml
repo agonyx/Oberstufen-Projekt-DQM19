@@ -35,6 +35,11 @@
     <property name="ts.external.directory.path" value="C:\Users\Leon\Documents\GitHub\Oberstufen-Projekt-DQM19\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Leon\Documents\GitHub\Oberstufen-Projekt-DQM19\src\app\services" />
+    </key>
+  </component>
   <component name="RunManager" selected="npm.Angular CLI Server">
     <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
       <method v="2" />
@@ -58,7 +63,14 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1643873256147</updated>
+<<<<<<< Updated upstream
       <workItem from="1643873258943" duration="1854000" />
+=======
+      <workItem from="1643873258943" duration="4785000" />
+      <workItem from="1643881792876" duration="1348000" />
+      <workItem from="1644476639552" duration="7565000" />
+      <workItem from="1645686132517" duration="357000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
