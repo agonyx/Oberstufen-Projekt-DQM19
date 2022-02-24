@@ -1,6 +1,11 @@
 <div class="container">
-  <button id="playermenubutton" class="btn btn-secondary">Spieler</button>
-  <button id="mastermenubutton" class="btn btn-secondary">Meister</button>
-  <button id="settings" class="btn btn-secondary">Einstellungen</button>
+<nav>
+
+<a routerLink="/player" routerLinkActive="active">Spieler</a>
+<a routerLink="/master" routerLinkActive="">Master</a>
+
+</nav>
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>
 </div>
 
