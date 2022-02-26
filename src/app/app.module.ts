@@ -15,7 +15,7 @@ import { AppRoutingModule } from './components/app-routing/app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule,  AppRoutingModule, NgbModule ],
+  imports:      [ BrowserModule, FormsModule,  AppRoutingModule, NgbModule  ],
   declarations: [ AppComponent, MainMenuComponent, ChatroomComponent, MessageComponent, UserItemComponent, UserListComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ChatService]

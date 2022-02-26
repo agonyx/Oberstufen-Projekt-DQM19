@@ -1,12 +1,24 @@
-<head></head>
+<head>
+
+</head>
+
 <body>
-  <h1>SLF CHARACTER PLAY</h1>
-  <!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
-<nav>
-  <a routerLink="/player"> Spieler</a>
-  <a routerLink="/mainmenu"> Mainmenu</a>
-  <a routerLink="/master"> Master</a>
-</nav>
-<!-- The routed views render in the <router-outlet>-->
-<router-outlet> </router-outlet>
+<!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
+<div class="bg-dark " >
+  <h1 class="bg-dark text-white "> SLF CHARACTER PLAY</h1>
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+      <a class="navbar-brand navbar-dark bg-dark text-white" [routerLink]="['/mainmenu']">Mainmenu</a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link navbar-dark bg-dark text-white"[routerLink]="['/player']">Spieler</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-dark bg-dark text-white" [routerLink]="['/master']">Master</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+<router-outlet></router-outlet>
 </body>
