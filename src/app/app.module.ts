@@ -13,10 +13,12 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { AppRoutingModule } from './components/app-routing/app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ChatFormComponent } from './components/chat-form/chat-form.component';
+import { FeedComponent } from './components/feed/feed.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule,  AppRoutingModule, NgbModule  ],
-  declarations: [ AppComponent, MainMenuComponent, ChatroomComponent, MessageComponent, UserItemComponent, UserListComponent ],
+  declarations: [ AppComponent, MainMenuComponent, ChatroomComponent, MessageComponent, UserItemComponent, UserListComponent, ChatFormComponent, FeedComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ChatService]
 
