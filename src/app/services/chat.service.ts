@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase/app';
 import {ChatMessage} from "../models/chat-message.model";
+import {AngularFireDatabase, AngularFireList} from "@angular/fire/compat/database";
 @Injectable({
   providedIn: 'root'
 })
