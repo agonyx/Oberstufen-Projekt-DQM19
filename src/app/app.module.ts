@@ -13,15 +13,18 @@ import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
 import { ChatService } from "./services/chat.service";
 import { UserListComponent } from './components/user-list/user-list.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
-import { AppRoutingModule } from './components/app-routing/app-routing.module';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChatFormComponent } from './components/chat-form/chat-form.component';
 import { FeedComponent } from './components/feed/feed.component';
 import {environment} from "../environments/environment";
 import { TesteComponent } from './teste/teste.component';
+import { PlayerTalentsComponent } from './components/player-talents/player-talents.component';
+import {MasterComponent} from "./components/master/master.component";
+import {PlayerComponent} from "./components/player/player.component";
 @NgModule({
   imports:      [ BrowserModule, FormsModule,  AppRoutingModule, NgbModule,AngularFireModule.initializeApp(environment.firebase), AngularFireDatabaseModule ],
-  declarations: [ AppComponent, MainMenuComponent, ChatroomComponent, MessageComponent, UserItemComponent, UserListComponent, ChatFormComponent, FeedComponent, TesteComponent ],
+  declarations: [ AppComponent, MainMenuComponent, ChatroomComponent, MessageComponent, UserItemComponent, UserListComponent, ChatFormComponent, FeedComponent, TesteComponent, PlayerTalentsComponent, MasterComponent, PlayerComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ChatService]
 
