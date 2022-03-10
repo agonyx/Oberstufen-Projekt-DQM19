@@ -6,12 +6,17 @@ import { MasterComponent } from '../components/master/master.component';
 import {ChatFormComponent} from "../components/chat-form/chat-form.component";
 import {ChatroomComponent} from "../components/chatroom/chatroom.component";
 import {PlayerTalentsComponent} from "../components/player-talents/player-talents.component";
+import {BodyTalentsComponent} from "../components/player-talents/body-talents/body-talents.component";
 const routes: Routes = [
   { path: '', redirectTo: '/mainmenu', pathMatch: 'full' },
   { path: 'mainmenu', component: MainMenuComponent},
   { path: 'player', component: PlayerComponent,
     children: [
-      {path: 'talents', component: PlayerTalentsComponent}
+      {path: 'talents', component: PlayerTalentsComponent,
+        children: [
+          {path: 'body-talents', component: BodyTalentsComponent }
+        ]
+      }
     ]
   },
   { path: 'master', component: MasterComponent},
