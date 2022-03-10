@@ -1,7 +1,7 @@
 import {Faehigkeiten} from "./fertigkeiten";
 
 export class Player {
-  constructor(taltents: Faehigkeiten[]) {
+  constructor(APg: number,APa: number, mainAttributes: number[], taltents: Faehigkeiten[]) {
 
   }
 }
