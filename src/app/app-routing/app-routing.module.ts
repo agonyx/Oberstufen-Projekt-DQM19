@@ -8,6 +8,7 @@ import {ChatroomComponent} from "../components/chatroom/chatroom.component";
 import {PlayerTalentsComponent} from "../components/player-talents/player-talents.component";
 import {BodyTalentsComponent} from "../components/player-talents/body-talents/body-talents.component";
 import {BaseInfoComponent} from "../components/base-info/base-info.component";
+import {SocietyTalentsComponent} from "../components/player-talents/society-talents/society-talents.component";
 const routes: Routes = [
   { path: '', redirectTo: '/mainmenu', pathMatch: 'full' },
   { path: 'mainmenu', component: MainMenuComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
       {path: 'base-info', component: BaseInfoComponent},
       {path: 'talents', component: PlayerTalentsComponent,
         children: [
-          {path: 'body-talents', component: BodyTalentsComponent }
+          {path: 'body-talents', component: BodyTalentsComponent },
+          {path: 'society-talents', component: SocietyTalentsComponent }
         ]
       }
     ]

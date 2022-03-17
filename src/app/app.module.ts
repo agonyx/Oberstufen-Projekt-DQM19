@@ -24,9 +24,10 @@ import {MasterComponent} from "./components/master/master.component";
 import {PlayerComponent} from "./components/player/player.component";
 import { BodyTalentsComponent } from './components/player-talents/body-talents/body-talents.component';
 import { BaseInfoComponent } from './components/base-info/base-info.component';
+import { SocietyTalentsComponent } from './components/player-talents/society-talents/society-talents.component';
 @NgModule({
   imports:      [ BrowserModule, FormsModule,  AppRoutingModule, NgbModule,AngularFireModule.initializeApp(environment.firebase), AngularFireDatabaseModule ],
-  declarations: [ AppComponent, MainMenuComponent, ChatroomComponent, MessageComponent, UserItemComponent, UserListComponent, ChatFormComponent, FeedComponent, TesteComponent, PlayerTalentsComponent, MasterComponent, PlayerComponent, BodyTalentsComponent, BaseInfoComponent ],
+  declarations: [ AppComponent, MainMenuComponent, ChatroomComponent, MessageComponent, UserItemComponent, UserListComponent, ChatFormComponent, FeedComponent, TesteComponent, PlayerTalentsComponent, MasterComponent, PlayerComponent, BodyTalentsComponent, BaseInfoComponent, SocietyTalentsComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ChatService]
 
