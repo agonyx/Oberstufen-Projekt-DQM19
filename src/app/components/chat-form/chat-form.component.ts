@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ChatService} from "../../services/chat.service";
+import {FeedComponent} from "../feed/feed.component";
 
 @Component({
   selector: 'app-chat-form',
@@ -21,8 +22,11 @@ export class ChatFormComponent implements OnInit {
   handleSubmit(event: { keyCode: number; }) {
     if (event.keyCode === 13) {
       this.send();
+      FeedComponent.subscription?.unsubscribe();
+
     }
   }
+
 
 
 }

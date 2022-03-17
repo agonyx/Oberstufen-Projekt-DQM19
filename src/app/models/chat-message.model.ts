@@ -1,5 +1,7 @@
 export class ChatMessage {
-  $key?: string;
-  userName?: string;
-  message?: string;
+
+
+constructor( readonly userName?:string, readonly message?:string) {
+}
+
 }
