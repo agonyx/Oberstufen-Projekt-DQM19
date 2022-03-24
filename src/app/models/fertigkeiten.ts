@@ -1,5 +1,5 @@
 export class Faehigkeiten {
-  constructor(name: string, Eg1: string, Eg2: string, Eg3: string, Sf: string, Fw: number, type: string){
+  constructor(public name: string, public Eg1: string, public Eg2: string, public Eg3: string, public Sf: string, public Fw: number, public type: string){
 
   }
 }

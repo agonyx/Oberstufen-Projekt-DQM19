@@ -1,5 +1,5 @@
 export class Personaldata {
-  constructor(Name: string, Lastname: string, Geburtsort?: string, Geburtsdatum?: string, alter?: number, geschlecht?: string, größe?: number, gewicht?: number, Haarfarbe?: string, Augenfarbe?: string, Sozialstatus?: string) {
+  constructor(public Name: string, public Lastname: string, public Geburtsort?: string, public Geburtsdatum?: string, public alter?: number, public geschlecht?: string, public größe?: number, public gewicht?: number, public Haarfarbe?: string, public Augenfarbe?: string, public Sozialstatus?: string) {
 
   }
 }

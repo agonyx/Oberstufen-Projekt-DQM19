@@ -1,5 +1,5 @@
 export class Base {
-  constructor(Lep: number, Asp: number, Kap: number, Sk: number, Zk: number, Aw: number, Ini: number, Ges: number) {
+  constructor(public Lep: number, public Asp: number, public Kap: number, public Sk: number, public Zk: number, public Aw: number, public Ini: number, public Ges: number) {
   }
 
 }

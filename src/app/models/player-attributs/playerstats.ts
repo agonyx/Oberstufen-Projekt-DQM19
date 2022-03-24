@@ -1,5 +1,5 @@
 export class playerstats {
-  constructor(MU: number, KL: number, IN: number, CH: number, FF: number, GE: number, KO: number, KK: number) {
+  constructor(public MU: number, public KL: number, public IN: number, public CH: number, public FF: number, public GE: number, public KO: number, public KK: number) {
 
   }
 }
