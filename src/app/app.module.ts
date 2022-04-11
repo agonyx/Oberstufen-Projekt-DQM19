@@ -25,9 +25,11 @@ import {PlayerComponent} from "./components/player/player.component";
 import { BodyTalentsComponent } from './components/player-talents/body-talents/body-talents.component';
 import { BaseInfoComponent } from './components/base-info/base-info.component';
 import { SocietyTalentsComponent } from './components/player-talents/society-talents/society-talents.component';
+import {CheckboxModule} from "primeng/checkbox";
+import { PlayerSelectComponent } from './components/player-select/player-select.component';
 @NgModule({
-  imports:      [ BrowserModule, FormsModule,  AppRoutingModule, NgbModule,AngularFireModule.initializeApp(environment.firebase), AngularFireDatabaseModule ],
-  declarations: [ AppComponent, MainMenuComponent, ChatroomComponent, MessageComponent, UserItemComponent, UserListComponent, ChatFormComponent, FeedComponent, TesteComponent, PlayerTalentsComponent, MasterComponent, PlayerComponent, BodyTalentsComponent, BaseInfoComponent, SocietyTalentsComponent ],
+    imports: [BrowserModule, FormsModule, AppRoutingModule, NgbModule, AngularFireModule.initializeApp(environment.firebase), AngularFireDatabaseModule, CheckboxModule],
+  declarations: [ AppComponent, MainMenuComponent, ChatroomComponent, MessageComponent, UserItemComponent, UserListComponent, ChatFormComponent, FeedComponent, TesteComponent, PlayerTalentsComponent, MasterComponent, PlayerComponent, BodyTalentsComponent, BaseInfoComponent, SocietyTalentsComponent, PlayerSelectComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ChatService]
 

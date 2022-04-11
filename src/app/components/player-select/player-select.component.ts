@@ -3,11 +3,11 @@ import {PlayerService} from "../../services/player.service";
 import {Player} from "../../models/player";
 
 @Component({
-  selector: 'app-main-menu',
-  templateUrl: './main-menu.component.html',
-  styleUrls: ['./main-menu.component.css']
+  selector: 'app-player-select',
+  templateUrl: './player-select.component.html',
+  styleUrls: ['./player-select.component.css']
 })
-export class MainMenuComponent implements OnInit {
+export class PlayerSelectComponent implements OnInit {
 
   constructor(private playerService: PlayerService) { }
 
@@ -15,7 +15,7 @@ export class MainMenuComponent implements OnInit {
     return  this.playerService.players;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }

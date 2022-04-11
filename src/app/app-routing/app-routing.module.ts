@@ -9,10 +9,12 @@ import {PlayerTalentsComponent} from "../components/player-talents/player-talent
 import {BodyTalentsComponent} from "../components/player-talents/body-talents/body-talents.component";
 import {BaseInfoComponent} from "../components/base-info/base-info.component";
 import {SocietyTalentsComponent} from "../components/player-talents/society-talents/society-talents.component";
+import {PlayerSelectComponent} from "../components/player-select/player-select.component";
 const routes: Routes = [
   { path: '', redirectTo: '/mainmenu', pathMatch: 'full' },
   { path: 'mainmenu', component: MainMenuComponent},
-  { path: 'player', component: PlayerComponent,
+  { path: 'player-Selector', component: PlayerSelectComponent},
+  { path: 'player/:id', component: PlayerComponent,
     children: [
       {path: 'base-info', component: BaseInfoComponent},
       {path: 'talents', component: PlayerTalentsComponent,

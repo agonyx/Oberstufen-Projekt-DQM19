@@ -10,8 +10,10 @@ export class Player {
               public playerstats: stats,
               public playerPersonaldata: Personaldata,
               public basestats: Base,
-              public Spg: number,
-              public Spa: number) {
+              public spg: number,
+              public spa: number,
+
+  ) {
 
   }
 }
