@@ -14,7 +14,7 @@ export class PlayerService {
     this.creatData();
   }
   getPlayer(id: number): Player {
-    return this.players[id-1];
+    return this.players[id];
   }
   creatData() {
 
@@ -22,7 +22,7 @@ export class PlayerService {
     let player1Stats: stats = new stats(12, 14, 14, 13, 12, 12, 13, 11);
     let player1PersonalData: Personaldata = new Personaldata("Jendar", "Korninger");
     let player1BaseStats: Base = this.calcPlayerBaseStats(human, player1Stats);
-    let player1: Player = new Player(1,1000, human, player1Stats, player1PersonalData, player1BaseStats, 3, 0)
+    let player1: Player = new Player(0,1000, human, player1Stats, player1PersonalData, player1BaseStats, 3, 0)
     this.players.push(player1);
   }
   calcPlayerBaseStats(spezies: Spezies, pStats: stats) {
