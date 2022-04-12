@@ -22,8 +22,6 @@ export class ChatFormComponent implements OnInit {
   handleSubmit(event: { keyCode: number; }) {
     if (event.keyCode === 13) {
       this.send();
-      FeedComponent.subscription?.unsubscribe();
-
     }
   }
 

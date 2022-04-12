@@ -18,10 +18,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChatFormComponent } from './components/chat-form/chat-form.component';
 import { FeedComponent } from './components/feed/feed.component';
 import {environment} from "../environments/environment";
-import { TesteComponent } from './teste/teste.component';
 @NgModule({
   imports:      [ BrowserModule, FormsModule,  AppRoutingModule, NgbModule,AngularFireModule.initializeApp(environment.firebase), AngularFireDatabaseModule ],
-  declarations: [ AppComponent, MainMenuComponent, ChatroomComponent, MessageComponent, UserItemComponent, UserListComponent, ChatFormComponent, FeedComponent, TesteComponent ],
+  declarations: [ AppComponent, MainMenuComponent, ChatroomComponent, MessageComponent, UserItemComponent, UserListComponent, ChatFormComponent, FeedComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ChatService]
 

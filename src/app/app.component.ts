@@ -7,7 +7,9 @@ import { Component, VERSION } from '@angular/core';
 })
 export class AppComponent {
   name = 'Angular ' + VERSION.major;
-  public static initialload = false;
+
+  public static initialload = true;
+  public static index = 0;
 
 }
 

@@ -20,6 +20,8 @@ export class FeedComponent implements OnInit, OnChanges {
   }
   ngOnInit() {
     console.log("Appcomp Boolean: " + AppComponent.initialload)
+    console.log("OnInit triggered")
+
     this.methode1();
   }
   ngOnChanges() {
@@ -27,26 +29,36 @@ export class FeedComponent implements OnInit, OnChanges {
     console.log("Appcomp Boolean: " + AppComponent.initialload)
   }
   private methode1() {
-    if (!AppComponent.initialload) {
-      AppComponent.initialload = true;
+    if (AppComponent.initialload) {
+      AppComponent.initialload = false;
       FeedComponent.subscription = this.observable.subscribe(items => {
-        console.log("erste");
-        console.log("Appcomp Boolean: " + AppComponent.initialload)
-        for (let key in items) {
-          if (items.hasOwnProperty(key)) {
-            this.data.push(items[key]);
+        if(AppComponent.index <= 24) {
+          AppComponent.index++;
+          console.log("erste");
+          console.log("Appcomp Boolean: " + AppComponent.initialload)
+          for (let key in items) {
+            if (items.hasOwnProperty(key)) {
+              this.data.push(items[key]);
+            }
           }
-        }
-        console.log("data" + this.data.length)
+          console.log("data" + this.data.length)
 
-        for (let messageItem of this.data) {
-          let message = messageItem[0];
-          this.feed.push(new ChatMessage(message.userName, message.message));
+          for (let messageItem of this.data) {
+            let message = messageItem[0];
+            this.feed.push(new ChatMessage(message.userName, message.message));
+          }
+
+        }else {
+          this.data = [];
+          FeedComponent.subscription?.unsubscribe();
+
         }
       });
 
-    } else  if (AppComponent.initialload) {
-      this.chat.getLastMessage().subscribe(items => {
+
+
+    } if (!AppComponent.initialload) {
+      FeedComponent.subscription = this.chat.getLastMessage().subscribe(items => {
         console.log("zweite");
         for (let key in items) {
           if (items.hasOwnProperty(key)) {
@@ -60,9 +72,6 @@ export class FeedComponent implements OnInit, OnChanges {
           this.feed.push(new ChatMessage(message.userName, message.message));
         }
       });
-
-
-
     }
   }
 
