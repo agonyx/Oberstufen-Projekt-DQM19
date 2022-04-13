@@ -1,5 +1,9 @@
+<div class="divv">
+
 <input
   [(ngModel)]="message"
   (keydown)="handleSubmit($event)"
+  class="chatInput"
 />
-<button (click)=send() type="reset">Send</button>
+<button (click)=send() type="reset" class="chatButton">Send</button>
+</div>

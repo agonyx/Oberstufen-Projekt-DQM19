@@ -24,16 +24,17 @@ export class FeedComponent implements OnInit, OnChanges {
 
     this.methode1();
   }
+
   ngOnChanges() {
   console.log("changes triggered")
     console.log("Appcomp Boolean: " + AppComponent.initialload)
   }
+
   private methode1() {
     if (AppComponent.initialload) {
+      this.data = [];
       AppComponent.initialload = false;
       FeedComponent.subscription = this.observable.subscribe(items => {
-        if(AppComponent.index <= 24) {
-          AppComponent.index++;
           console.log("erste");
           console.log("Appcomp Boolean: " + AppComponent.initialload)
           for (let key in items) {
@@ -42,17 +43,13 @@ export class FeedComponent implements OnInit, OnChanges {
             }
           }
           console.log("data" + this.data.length)
-
+        let messages: ChatMessage[] = [];
           for (let messageItem of this.data) {
             let message = messageItem[0];
-            this.feed.push(new ChatMessage(message.userName, message.message));
+            messages.push(new ChatMessage(message.userName, message.message));
           }
-
-        }else {
-          this.data = [];
-          FeedComponent.subscription?.unsubscribe();
-
-        }
+          this.feed = messages;
+        this.data = [];
       });
 
 
@@ -65,15 +62,21 @@ export class FeedComponent implements OnInit, OnChanges {
             this.data.push(items[key]);
           }
         }
+        let nichtsmartaberfunktbestimmt = 0;
         console.log("data" + this.data.length)
-
         for (let messageItem of this.data) {
-          let message = messageItem[0];
-          this.feed.push(new ChatMessage(message.userName, message.message));
+          if(nichtsmartaberfunktbestimmt < 0) {
+            let message = messageItem[0];
+            this.feed.push(new ChatMessage(message.userName, message.message));
+            nichtsmartaberfunktbestimmt++;
+          }
         }
+
+        this.data = [];
       });
     }
   }
+
 
 
 
