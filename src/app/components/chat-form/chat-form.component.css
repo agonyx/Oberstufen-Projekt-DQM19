@@ -3,7 +3,8 @@
 
 }
 .chatInput{
-  padding-left: 170px;
+  text-align: left;
+  width: 372px;
 }
 
 .chatInput:focus{
