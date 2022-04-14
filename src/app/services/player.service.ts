@@ -26,7 +26,7 @@ export class PlayerService {
   }
   creatData() {
 
-    let human: Spezies = new Spezies(0, 5, -5, -5, 8);
+    let human: Spezies = new Spezies("Human",0, 5, -5, -5, 8);
     let player1Stats: stats = new stats(12, 14, 14, 13, 12, 12, 13, 11);
     let player1PersonalData: Personaldata = new Personaldata("Jendar", "Korninger");
     let player1BaseStats: Base = this.calcPlayerBaseStats(human, player1Stats);
