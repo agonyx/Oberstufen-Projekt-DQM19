@@ -1,7 +1,3 @@
-.mainContent{
-  display: flex;
-}
-
 .userListWrapper {
   background-color: #2A2845;
   color: #fff;
@@ -20,7 +16,6 @@
   font-size: 1.2em;
   flex: 5;
   order: 2;
-  overflow-y: scroll;
   padding:20px 0px 0px 24px;
 }
 
@@ -41,3 +36,25 @@
 app-user-list {
   width: 100%;
 }
+.mainContent{
+  display: flex;
+
+}
+.dice-div{
+  margin-top: 15px;
+}
+.inviscontent{
+  margin-top: 10px;
+  margin-left: 5px;
+}
+.dice-in{
+  margin-left: 3px;
+  margin-right: 3px;
+}
+.chatroom{
+  border-style: solid;
+  border-width: thin;
+  width: 430px;
+  margin-top: 1px;
+}
+

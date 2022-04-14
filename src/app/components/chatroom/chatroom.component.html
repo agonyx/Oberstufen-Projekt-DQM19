@@ -1,8 +1,24 @@
+
+
+<div class="chatroom">
 <div class="mainContent">
-  <div #scroller class="feedWrapper">
+  <div class="feedWrapper">
     <app-feed></app-feed>
   </div>
 </div>
+
 <div class="chatFormWrapper">
   <app-chat-form></app-chat-form>
+</div>
+</div>
+<div class="dice-div">
+  <button class="makevisbutton" (click)="this.switchWuerfelwunschState()">Würfeln</button>
+  <div class="inviscontent" *ngIf="this.wuerfelwunsch">
+
+    <label for="in1">Anzahl Würfe:</label>
+    <input type="number" id="in1"class="dice-in">
+    <label class="dice-content" for="in2">Anzahl Würfelseiten: </label>
+    <input type="number" id="in2"class="dice-in">
+    <button class="rollbutton"> GO </button>
+  </div>
 </div>
