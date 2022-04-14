@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {PlayerService} from "../../../services/player.service";
 import {ActivatedRoute} from "@angular/router";
 import {Player} from "../../../models/player";
+import {FertigkeitenService} from "../../../services/fertigkeiten.service";
+import {Faehigkeiten} from "../../../models/fertigkeiten";
 
 @Component({
   selector: 'app-body-talents',
@@ -10,13 +12,12 @@ import {Player} from "../../../models/player";
 })
 export class BodyTalentsComponent implements OnInit {
   @Input() player?: Player;
-  constructor(private playerService: PlayerService, private route: ActivatedRoute) { }
+  @Input() bodyTalents?: Faehigkeiten[];
+  constructor(private playerService: PlayerService) { }
 
   ngOnInit(): void {
-    this.getPlayer();
+    this.player = this.playerService.getPlayerPerID();
+    this.bodyTalents = this.playerService.getTalents(this.player, "b");
   }
-  getPlayer(): void {
-    let id = Number(this.route.snapshot.paramMap.get('id'));
-    this.player = this.playerService.getPlayer(id);
-  }
+
 }

@@ -10,17 +10,12 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class BaseInfoComponent implements OnInit {
   @Input() player?: Player;
-  constructor(private  playerService: PlayerService, private route: ActivatedRoute) {
+  constructor(private  playerService: PlayerService) {
   }
 
   ngOnInit() {
-  this.getHero();
+  this.player = this.playerService.getPlayerPerID();
   }
-  getHero(): void {
-   let id = Number(this.route.snapshot.paramMap.get('id'));
-   console.log(id);
-   this.player = this.playerService.getPlayer(id);
-   console.log(this.player)
-  }
+
 
 }

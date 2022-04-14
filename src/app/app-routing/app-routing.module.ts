@@ -10,6 +10,9 @@ import {BodyTalentsComponent} from "../components/player-talents/body-talents/bo
 import {BaseInfoComponent} from "../components/base-info/base-info.component";
 import {SocietyTalentsComponent} from "../components/player-talents/society-talents/society-talents.component";
 import {PlayerSelectComponent} from "../components/player-select/player-select.component";
+import {NatureTalentsComponent} from "../components/player-talents/nature-talents/nature-talents.component";
+import {KnowledgeTalentsComponent} from "../components/player-talents/knowledge-talents/knowledge-talents.component";
+import {WorkTalentsComponent} from "../components/player-talents/work-talents/work-talents.component";
 const routes: Routes = [
   { path: '', redirectTo: '/mainmenu', pathMatch: 'full' },
   { path: 'mainmenu', component: MainMenuComponent},
@@ -20,7 +23,10 @@ const routes: Routes = [
       {path: 'talents', component: PlayerTalentsComponent,
         children: [
           {path: 'body-talents', component: BodyTalentsComponent },
-          {path: 'society-talents', component: SocietyTalentsComponent }
+          {path: 'society-talents', component: SocietyTalentsComponent },
+          {path: 'nature-talents', component: NatureTalentsComponent },
+          {path: 'knowledge-talents', component: KnowledgeTalentsComponent },
+          {path: 'work-talents', component: WorkTalentsComponent }
         ]
       }
     ]

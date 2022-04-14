@@ -29,9 +29,12 @@ import {CheckboxModule} from "primeng/checkbox";
 import { PlayerSelectComponent } from './components/player-select/player-select.component';
 import {PlayerService} from "./services/player.service";
 import {FertigkeitenService} from "./services/fertigkeiten.service";
+import { NatureTalentsComponent } from './components/player-talents/nature-talents/nature-talents.component';
+import { KnowledgeTalentsComponent } from './components/player-talents/knowledge-talents/knowledge-talents.component';
+import { WorkTalentsComponent } from './components/player-talents/work-talents/work-talents.component';
 @NgModule({
     imports: [BrowserModule, FormsModule, AppRoutingModule, NgbModule, AngularFireModule.initializeApp(environment.firebase), AngularFireDatabaseModule, CheckboxModule],
-  declarations: [ AppComponent, MainMenuComponent, ChatroomComponent, MessageComponent, UserItemComponent, UserListComponent, ChatFormComponent, FeedComponent, TesteComponent, PlayerTalentsComponent, MasterComponent, PlayerComponent, BodyTalentsComponent, BaseInfoComponent, SocietyTalentsComponent, PlayerSelectComponent ],
+  declarations: [ AppComponent, MainMenuComponent, ChatroomComponent, MessageComponent, UserItemComponent, UserListComponent, ChatFormComponent, FeedComponent, TesteComponent, PlayerTalentsComponent, MasterComponent, PlayerComponent, BodyTalentsComponent, BaseInfoComponent, SocietyTalentsComponent, PlayerSelectComponent, NatureTalentsComponent, KnowledgeTalentsComponent, WorkTalentsComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ChatService, PlayerService, FertigkeitenService]
 

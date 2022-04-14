@@ -10,14 +10,11 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class PlayerComponent implements OnInit {
   @Input() player?: Player;
-  constructor(private playerService: PlayerService, private route: ActivatedRoute) {
+  constructor(private playerService: PlayerService) {
   }
 
   ngOnInit() {
-  this.getPlayer();
+  this.player = this.playerService.getPlayerPerID();
   }
-  getPlayer(): void {
-    let id = Number(this.route.snapshot.paramMap.get('id'));
-    this.player = this.playerService.getPlayer(id);
-  }
+
 }

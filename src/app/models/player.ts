@@ -2,6 +2,7 @@ import {Personaldata} from "./player-attributs/personaldata";
 import {Base} from "./player-attributs/base";
 import {stats} from "./player-attributs/stats";
 import {Spezies} from "./Spezies";
+import {PlayerTalents} from "./player-attributs/playerTalents";
 
 export class Player {
   constructor(public id: number,
@@ -12,7 +13,7 @@ export class Player {
               public basestats: Base,
               public spg: number,
               public spa: number,
-
+              public talents: PlayerTalents[]
   ) {
 
   }
