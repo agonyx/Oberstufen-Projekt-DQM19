@@ -1,20 +1,20 @@
-<div>Moin Jungs
+<div *ngIf="player">
   <div>
     <nav>
       <ul>
-        <li><a class="nav-link" routerLink='/player/talents/body-talents' >Körpertalente</a></li>
+        <li><a class="nav-link" routerLink='/player/{{player.id}}/talents/body-talents' >Körpertalente</a></li>
       </ul>
       <ul>
-        <li><a class="nav-link" routerLink='/player/talents/society-talents' >Gesellschaftstalente</a></li>
+        <li><a class="nav-link" routerLink='/player/{{player.id}}/talents/society-talents' >Gesellschaftstalente</a></li>
       </ul>
       <ul>
-        <li><a class="nav-link" routerLink='/player/talents/body-talents' >Naturtalente</a></li>
+        <li><a class="nav-link" routerLink='/player/{{player.id}}/talents/body-talents' >Naturtalente</a></li>
       </ul>
       <ul>
-        <li><a class="nav-link" routerLink='/player/talents/body-talents' >Wissenstalente</a></li>
+        <li><a class="nav-link" routerLink='/player/{{player.id}}/talents/body-talents' >Wissenstalente</a></li>
       </ul>
       <ul>
-        <li><a class="nav-link" routerLink='/player/talents/body-talents' >Handwerkstalente</a></li>
+        <li><a class="nav-link" routerLink='/player/{{player.id}}/talents/body-talents' >Handwerkstalente</a></li>
       </ul>
     </nav>
     <router-outlet></router-outlet>

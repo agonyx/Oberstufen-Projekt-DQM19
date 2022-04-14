@@ -27,11 +27,13 @@ import { BaseInfoComponent } from './components/base-info/base-info.component';
 import { SocietyTalentsComponent } from './components/player-talents/society-talents/society-talents.component';
 import {CheckboxModule} from "primeng/checkbox";
 import { PlayerSelectComponent } from './components/player-select/player-select.component';
+import {PlayerService} from "./services/player.service";
+import {FertigkeitenService} from "./services/fertigkeiten.service";
 @NgModule({
     imports: [BrowserModule, FormsModule, AppRoutingModule, NgbModule, AngularFireModule.initializeApp(environment.firebase), AngularFireDatabaseModule, CheckboxModule],
   declarations: [ AppComponent, MainMenuComponent, ChatroomComponent, MessageComponent, UserItemComponent, UserListComponent, ChatFormComponent, FeedComponent, TesteComponent, PlayerTalentsComponent, MasterComponent, PlayerComponent, BodyTalentsComponent, BaseInfoComponent, SocietyTalentsComponent, PlayerSelectComponent ],
   bootstrap:    [ AppComponent ],
-  providers: [ChatService]
+  providers: [ChatService, PlayerService, FertigkeitenService]
 
 })
 export class AppModule { }

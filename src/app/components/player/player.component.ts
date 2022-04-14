@@ -14,9 +14,9 @@ export class PlayerComponent implements OnInit {
   }
 
   ngOnInit() {
-  this.getHero();
+  this.getPlayer();
   }
-  getHero(): void {
+  getPlayer(): void {
     let id = Number(this.route.snapshot.paramMap.get('id'));
     this.player = this.playerService.getPlayer(id);
   }
