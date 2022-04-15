@@ -29,10 +29,6 @@ export class FeedComponent implements OnInit, OnChanges {
   console.log("changes triggered")
     console.log("Appcomp Boolean: " + AppComponent.initialload)
   }
-public pushfeed(message: ChatMessage) {
-    this.feed.push(message)
-
-}
 
   private methode1() {
     if (AppComponent.initialload) {
