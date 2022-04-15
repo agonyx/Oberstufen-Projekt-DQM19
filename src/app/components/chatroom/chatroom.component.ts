@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import {ChatMessage} from "../../models/chat-message.model";
+import {ChatService} from "../../services/chat.service";
 
 @Component({
   selector: 'app-chatroom',
@@ -7,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chatroom.component.css']
 })
 export class ChatroomComponent implements OnInit {
-wuerfelwunsch = false;
-  constructor() { }
+  anzahlwuerfe = 0;
+  wuerfelseiten = 0;
+  wuerfelwunsch = false;
+
+
+  constructor(private chat: ChatService) { }
 
   ngOnInit(): void {
   }
@@ -23,5 +28,19 @@ switchWuerfelwunschState(){
   randomBetween(min: number, max: number):number {
   return Math.round(Math.random() * (max - min)+ min);
 }
+  roll(anzahlwuerfe: number, wuerfelseiten:number){
+    let string =""
+    if(anzahlwuerfe != 0 && wuerfelseiten != 0) {
 
+
+    for (let i = 0; i < anzahlwuerfe; i++){
+      string += this.randomBetween(1,wuerfelseiten)+" "
+    }
+
+      let message = new ChatMessage("Würfelbot", "Ich habe "+ this.anzahlwuerfe +"w"+this.wuerfelseiten + " für dich geworfen! \n Ergebnisse: " + string );
+      this.chat.sendChatMessage(message);
+  } else {
+      alert("Werte können nicht 0 sein!")
+    }
+  }
 }

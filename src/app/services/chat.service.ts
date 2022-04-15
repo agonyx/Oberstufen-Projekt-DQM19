@@ -24,6 +24,14 @@ getDB(): AngularFireDatabase{
       }]);
     console.log("asugsdjadjadak")
   }
+
+  sendChatMessage(msg: ChatMessage) {
+    this.chatMessages = this.getMessages();
+    this.chatMessages.push([{
+      userName: msg.userName,
+      message: msg.message
+    }]);
+  }
   getMessages(): AngularFireList<ChatMessage[]> {
     return this.db.list('messages',ref => ref.limitToLast(25).orderByKey());
   }

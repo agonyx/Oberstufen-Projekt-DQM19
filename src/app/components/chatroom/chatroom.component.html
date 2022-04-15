@@ -16,9 +16,9 @@
   <div class="inviscontent" *ngIf="this.wuerfelwunsch">
 
     <label for="in1">Anzahl Würfe:</label>
-    <input type="number" id="in1"class="dice-in">
+    <input type="number" id="in1"class="dice-in" [(ngModel)] = "this.anzahlwuerfe" >
     <label class="dice-content" for="in2">Anzahl Würfelseiten: </label>
-    <input type="number" id="in2"class="dice-in">
-    <button class="rollbutton"> GO </button>
+    <input type="number" id="in2"class="dice-in" [(ngModel)] = "this.wuerfelseiten">
+    <button class="rollbutton" (click)="roll(this.anzahlwuerfe, this.wuerfelseiten)"> GO </button>
   </div>
 </div>
