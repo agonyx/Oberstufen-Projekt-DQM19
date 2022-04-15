@@ -1,0 +1,22 @@
+<div *ngIf="player">
+  <div>
+    <nav>
+      <ul>
+        <li><a class="nav-link" routerLink='/player/{{player.id}}/talents/body-talents' >Körpertalente</a></li>
+      </ul>
+      <ul>
+        <li><a class="nav-link" routerLink='/player/{{player.id}}/talents/society-talents' >Gesellschaftstalente</a></li>
+      </ul>
+      <ul>
+        <li><a class="nav-link" routerLink='/player/{{player.id}}/talents/nature-talents' >Naturtalente</a></li>
+      </ul>
+      <ul>
+        <li><a class="nav-link" routerLink='/player/{{player.id}}/talents/knowledge-talents' >Wissenstalente</a></li>
+      </ul>
+      <ul>
+        <li><a class="nav-link" routerLink='/player/{{player.id}}/talents/work-talents' >Handwerkstalente</a></li>
+      </ul>
+    </nav>
+    <router-outlet></router-outlet>
+  </div>
+

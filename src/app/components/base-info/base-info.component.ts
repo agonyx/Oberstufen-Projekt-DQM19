@@ -4,17 +4,18 @@ import {PlayerService} from "../../services/player.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
-  selector: 'app-player',
-  templateUrl: './player.component.html',
-  styleUrls: ['./player.component.css']
+  selector: 'app-base-info',
+  templateUrl: './base-info.component.html',
+  styleUrls: ['./base-info.component.css']
 })
-export class PlayerComponent implements OnInit {
+export class BaseInfoComponent implements OnInit {
   @Input() player?: Player;
-  constructor(private playerService: PlayerService) {
+  constructor(private  playerService: PlayerService) {
   }
 
   ngOnInit() {
   this.player = this.playerService.getPlayerPerID();
   }
+
 
 }

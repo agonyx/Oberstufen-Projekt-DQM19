@@ -1,1 +1,15 @@
-<button>Moin</button>
+<div *ngIf="player">
+  <h2>{{player.playerPersonaldata.Name}} {{player.playerPersonaldata.Lastname}}</h2>
+  <div>
+    <nav>
+      <ul>
+        <li><a class="nav-link" routerLink='/player/{{player.id}}/base-info' >Charakter</a></li>
+        <li><a class="nav-link" routerLink='/player/{{player.id}}/talents' >Fertigkeiten</a></li>
+      </ul>
+    </nav>
+
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+

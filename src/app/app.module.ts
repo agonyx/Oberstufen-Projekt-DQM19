@@ -13,16 +13,29 @@ import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
 import { ChatService } from "./services/chat.service";
 import { UserListComponent } from './components/user-list/user-list.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
-import { AppRoutingModule } from './components/app-routing/app-routing.module';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChatFormComponent } from './components/chat-form/chat-form.component';
 import { FeedComponent } from './components/feed/feed.component';
 import {environment} from "../environments/environment";
+import { PlayerTalentsComponent } from './components/player-talents/player-talents.component';
+import {MasterComponent} from "./components/master/master.component";
+import {PlayerComponent} from "./components/player/player.component";
+import { BodyTalentsComponent } from './components/player-talents/body-talents/body-talents.component';
+import { BaseInfoComponent } from './components/base-info/base-info.component';
+import { SocietyTalentsComponent } from './components/player-talents/society-talents/society-talents.component';
+import {CheckboxModule} from "primeng/checkbox";
+import { PlayerSelectComponent } from './components/player-select/player-select.component';
+import {PlayerService} from "./services/player.service";
+import {FertigkeitenService} from "./services/fertigkeiten.service";
+import { NatureTalentsComponent } from './components/player-talents/nature-talents/nature-talents.component';
+import { KnowledgeTalentsComponent } from './components/player-talents/knowledge-talents/knowledge-talents.component';
+import { WorkTalentsComponent } from './components/player-talents/work-talents/work-talents.component';
 @NgModule({
-  imports:      [ BrowserModule, FormsModule,  AppRoutingModule, NgbModule,AngularFireModule.initializeApp(environment.firebase), AngularFireDatabaseModule ],
-  declarations: [ AppComponent, MainMenuComponent, ChatroomComponent, MessageComponent, UserItemComponent, UserListComponent, ChatFormComponent, FeedComponent ],
+    imports: [BrowserModule, FormsModule, AppRoutingModule, NgbModule, AngularFireModule.initializeApp(environment.firebase), AngularFireDatabaseModule, CheckboxModule],
+  declarations: [ AppComponent, MainMenuComponent, ChatroomComponent, MessageComponent, UserItemComponent, UserListComponent, ChatFormComponent, FeedComponent, TesteComponent, PlayerTalentsComponent, MasterComponent, PlayerComponent, BodyTalentsComponent, BaseInfoComponent, SocietyTalentsComponent, PlayerSelectComponent, NatureTalentsComponent, KnowledgeTalentsComponent, WorkTalentsComponent ],
   bootstrap:    [ AppComponent ],
-  providers: [ChatService]
+  providers: [ChatService, PlayerService, FertigkeitenService]
 
 })
 export class AppModule { }
