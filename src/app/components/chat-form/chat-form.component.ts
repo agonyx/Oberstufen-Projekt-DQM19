@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ChatService} from "../../services/chat.service";
+import {FeedComponent} from "../feed/feed.component";
 
 @Component({
   selector: 'app-chat-form',
@@ -23,6 +24,7 @@ export class ChatFormComponent implements OnInit {
       this.send();
     }
   }
+
 
 
 }

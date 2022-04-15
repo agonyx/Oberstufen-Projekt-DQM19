@@ -1,5 +1,8 @@
-<div>
-  <div *ngFor="let message of feed" class="message">
+<div class="scroll-bg">
+  <div class="scroll-div" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+  <div #feeddiv *ngFor="let message of feed" class="message">
     <app-message [chatMessage]=message></app-message>
   </div>
+  </div>
 </div>
+
