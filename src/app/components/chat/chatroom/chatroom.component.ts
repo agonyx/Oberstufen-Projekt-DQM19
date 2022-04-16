@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ChatMessage} from "../../../models/chat-message.model";
 import {ChatService} from "../../../services/chat.service";
+import {AppComponent} from "../../../app.component";
 
 @Component({
   selector: 'app-chatroom',
@@ -13,8 +14,10 @@ export class ChatroomComponent implements OnInit {
   wuerfelwunsch = false;
 
 
-  constructor(private chat: ChatService) { }
-
+  constructor(private chat: ChatService) {
+    //Test --- If message amount > 25 and everything works then fine
+    AppComponent.initialload = true;
+  }
   ngOnInit(): void {
   }
 switchWuerfelwunschState(){
