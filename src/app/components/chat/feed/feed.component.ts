@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnChanges, OnInit, Renderer2, ViewChild} from '@angular/core';
-import {ChatService} from "../../services/chat.service";
-import {ChatMessage} from "../../models/chat-message.model";
-import {AppComponent} from "../../app.component";
+import {ChatService} from "../../../services/chat.service";
+import {ChatMessage} from "../../../models/chat-message.model";
+import {AppComponent} from "../../../app.component";
 import {Observable, Subscription} from "rxjs";
 
 @Component({

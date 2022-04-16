@@ -15,7 +15,7 @@ import {ActivatedRoute} from "@angular/router";
 export class PlayerService {
   players: Player[] = [];
   constructor(private fertigkeitenService: FertigkeitenService, private route: ActivatedRoute) {
-    this.creatData();
+    this.createData();
   }
   getPlayer(id: number): Player {
     return this.players[id];
@@ -24,7 +24,7 @@ export class PlayerService {
     let id = Number(this.route.snapshot.paramMap.get('id'));
     return this.getPlayer(id);
   }
-  creatData() {
+  createData() {
 
     let human: Spezies = new Spezies("Human",0, 5, -5, -5, 8);
     let player1Stats: stats = new stats(12, 14, 14, 13, 12, 12, 13, 11);

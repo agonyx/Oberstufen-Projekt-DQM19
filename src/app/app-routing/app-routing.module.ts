@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router'; // CLI imports router
 import { MainMenuComponent } from '../components/main-menu/main-menu.component';
 import { PlayerComponent } from '../components/player/player.component';
 import { MasterComponent } from '../components/master/master.component';
-import {ChatFormComponent} from "../components/chat-form/chat-form.component";
-import {ChatroomComponent} from "../components/chatroom/chatroom.component";
+import {ChatFormComponent} from "../components/chat/chat-form/chat-form.component";
+import {ChatroomComponent} from "../components/chat/chatroom/chatroom.component";
 import {PlayerTalentsComponent} from "../components/player-talents/player-talents.component";
 import {BodyTalentsComponent} from "../components/player-talents/body-talents/body-talents.component";
 import {BaseInfoComponent} from "../components/base-info/base-info.component";
