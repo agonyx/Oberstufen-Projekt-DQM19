@@ -65,12 +65,69 @@
   </div>
   <div class="row">
     <div class="col-2">
-      <label for="playerName">Titel:</label>
+      <label for="playerTitle">Titel:</label>
       <output type="text" id="playerTitle" name="playerName">{{player.playerPersonaldata.titel}}</output>
     </div>
     <div class="col-2">
-      <label for="playerName">Sozial:</label>
-      <output type="text" id="playerSocialstatus" name="playerName">{{player.playerPersonaldata.Sozialstatus}}</output>
+      <label for="playerSocialstatus">Sozial:</label>
+      <output type="text" id="playerSocialstatus" name="playerSocialstatus">{{player.playerPersonaldata.Sozialstatus}}</output>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <p>Schicksalspunkte:</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <label for="playerSchicksalspunkteGesamt">Gesamt:</label>
+      <output type="number" id="playerSchicksalspunkteGesamt" name="playerSchicksalspunkteGesamt">{{player.spg}}</output>
+    </div>
+    <div class="col-2">
+      <label for="playerSchicksalspunkteVerbleibend">Aktuell:</label>
+      <output type="number" id="playerSchicksalspunkteVerbleibend" name="playerSchicksalspunkteVerbleibend" min="0" max="3">{{playerServicen.Schicksalspunkteverbleibend()}}</output>
+    </div>
+    <div class="col-1">
+      <button id="plusbuttonSp" (click)="playerServicen.SchicksalspunkteVeraendern(-1)">+</button>
+    </div>
+    <div class="col-1">
+      <button id="minusbuttonSp" (click)="playerServicen.SchicksalspunkteVeraendern(1)">-</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table>
+        <thead>
+          <tr>
+            <th>Sprache</th>
+            <th>Level</th>
+            <th>&#160;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table" *ngFor="let l of player.languages">
+            <td>{{l.name}}</td>
+            <td>{{l.level}}</td>
+            <td *ngIf="l.MS">MS</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table>
+        <thead>
+        <tr>
+          <th>Schrift</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="table" *ngFor="let w of player.writings">
+          <td>{{w.name}}</td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

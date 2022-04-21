@@ -8,6 +8,8 @@ import {PlayerTalents} from "../models/player-attributs/playerTalents";
 import {FertigkeitenService} from "./fertigkeiten.service";
 import {Faehigkeiten} from "../models/fertigkeiten";
 import {ActivatedRoute} from "@angular/router";
+import {Language} from "../models/language";
+import {writing} from "../models/writing";
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +33,9 @@ export class PlayerService {
     let player1PersonalData: Personaldata = new Personaldata("Jendar", "Korninger");
     let player1BaseStats: Base = this.calcPlayerBaseStats(human, player1Stats);
     let player1Talents: PlayerTalents[] = this.creatPlayerTalents(this.fertigkeitenService.fertigkeiten);
-    let player1: Player = new Player(0,1000, human, player1Stats, player1PersonalData, player1BaseStats, 3, 0, player1Talents)
+    let player1Languages: Language[] = this.creatLanguages();
+    let player1writing: writing[] = this.creatwriting();
+    let player1: Player = new Player(0,1000, human, player1Stats, player1PersonalData, player1BaseStats, 3, 0, player1Talents, player1Languages, player1writing)
     this.players.push(player1);
   }
   calcPlayerBaseStats(spezies: Spezies, pStats: stats) {
@@ -53,6 +57,22 @@ export class PlayerService {
       pbs.Kap = 20 + pStats.IN;
     }
     return pbs;
+  }
+  creatLanguages(): Language[]{
+    let languages: Language[]= []
+    let Garethi: Language = new Language("Garethi",3,true);
+    let Bosperano: Language = new Language("Bosperano",3,false);
+    let Thorwahlsch: Language = new Language("Thorwahlsch",2,false);
+    languages.push(Garethi);
+    languages.push(Bosperano);
+    languages.push(Thorwahlsch);
+    return languages;
+  }
+  creatwriting(): writing[]{
+    let writings: writing[] = [];
+    let KuslikerZeichen: writing = new  writing(2,"Kusliker Zeichen");
+    writings.push(KuslikerZeichen);
+    return writings;
   }
   creatPlayerTalents(fertigkeiten: Faehigkeiten[]): PlayerTalents[]{
     let playerTalents: PlayerTalents[] = [];
@@ -76,5 +96,14 @@ export class PlayerService {
       }
     })
     return saveTalents;
+  }
+  Schicksalspunkteverbleibend():number {
+    let currentsp: number = this.getPlayerPerID().spg - this.getPlayerPerID().spa;
+    return currentsp;
+  }
+  SchicksalspunkteVeraendern(a: number) {
+    let b: number = this.getPlayerPerID().spa;
+      this.getPlayerPerID().spa = b + a;
+    console.log(this.getPlayerPerID().spa)
   }
 }
