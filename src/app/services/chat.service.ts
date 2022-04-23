@@ -45,7 +45,7 @@ getDB(): AngularFireDatabase{
 }
   rollTalents(talent: Faehigkeiten, player:Player){
     let talentRoll: number = this.rollTalentsQs(talent,player);
-    let message = new ChatMessage("Würfelbot","Du hast "+ talentRoll + " QS bei deiner Probe auf "+talent.name+" bekommen.")
+    let message = new ChatMessage(player.playerPersonaldata.Name+" "+player.playerPersonaldata.Lastname,"Du hast "+ talentRoll + " QS bei deiner Probe auf "+talent.name+" bekommen.")
     this.sendChatMessage(message);
   }
   randomBetween(min: number, max: number):number {
