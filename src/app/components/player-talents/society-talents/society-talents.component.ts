@@ -19,6 +19,11 @@ export class SocietyTalentsComponent implements OnInit {
     this.player = this.playerService.getPlayerPerID();
     this.societyTalents = this.playerService.getTalents(this.player, "s");
   }
+  diceRoll(talent: Faehigkeiten) {
+    if(this.player){
+      this.playerService.diceRoll(talent,this.player)
+    }
+  }
 
 
 }

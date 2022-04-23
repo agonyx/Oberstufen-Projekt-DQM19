@@ -17,4 +17,9 @@ export class WorkTalentsComponent implements OnInit {
     this.player = this.playerService.getPlayerPerID();
     this.workTalents = this.playerService.getTalents(this.player, "w");
   }
+  diceRoll(talent: Faehigkeiten) {
+    if(this.player){
+      this.playerService.diceRoll(talent,this.player)
+    }
+  }
 }

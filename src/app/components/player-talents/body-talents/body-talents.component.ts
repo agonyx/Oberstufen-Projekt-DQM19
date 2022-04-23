@@ -5,6 +5,7 @@ import {Player} from "../../../models/player";
 import {FertigkeitenService} from "../../../services/fertigkeiten.service";
 import {Faehigkeiten} from "../../../models/fertigkeiten";
 import {ChatroomComponent} from "../../chatroom/chatroom.component";
+import {ChatService} from "../../../services/chat.service";
 
 @Component({
   selector: 'app-body-talents',
@@ -14,7 +15,7 @@ import {ChatroomComponent} from "../../chatroom/chatroom.component";
 export class BodyTalentsComponent implements OnInit {
   @Input() player?: Player;
   @Input() bodyTalents?: Faehigkeiten[];
-  constructor(private playerService: PlayerService, ) { }
+  constructor(private playerService: PlayerService) { }
 
   ngOnInit(): void {
     this.player = this.playerService.getPlayerPerID();
@@ -22,7 +23,7 @@ export class BodyTalentsComponent implements OnInit {
   }
   diceRoll(talent: Faehigkeiten) {
     if(this.player){
-      
+      this.playerService.diceRoll(talent,this.player)
     }
   }
 }

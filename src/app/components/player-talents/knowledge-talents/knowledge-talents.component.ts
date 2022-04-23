@@ -17,5 +17,10 @@ export class KnowledgeTalentsComponent implements OnInit {
     this.player = this.playerService.getPlayerPerID();
     this.knowledgeTalents = this.playerService.getTalents(this.player, "k");
   }
+  diceRoll(talent: Faehigkeiten) {
+    if(this.player){
+      this.playerService.diceRoll(talent,this.player)
+    }
+  }
 
 }

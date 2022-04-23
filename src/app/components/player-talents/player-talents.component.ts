@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Player} from "../../models/player";
 import {PlayerService} from "../../services/player.service";
 import {ActivatedRoute} from "@angular/router";
+import {Faehigkeiten} from "../../models/fertigkeiten";
 
 @Component({
   selector: 'app-player-talents',
@@ -15,6 +16,7 @@ export class PlayerTalentsComponent implements OnInit {
   ngOnInit(): void {
     this.player = this.playerService.getPlayerPerID();
   }
+
 
 
 }

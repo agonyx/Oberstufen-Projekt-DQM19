@@ -17,5 +17,10 @@ export class NatureTalentsComponent implements OnInit {
     this.player = this.playerService.getPlayerPerID();
     this.natureTalents = this.playerService.getTalents(this.player, "n");
   }
+  diceRoll(talent: Faehigkeiten) {
+    if(this.player){
+      this.playerService.diceRoll(talent,this.player)
+    }
+  }
 
 }

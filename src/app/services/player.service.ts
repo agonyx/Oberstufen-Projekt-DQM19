@@ -11,13 +11,14 @@ import {ActivatedRoute} from "@angular/router";
 import {Language} from "../models/language";
 import {writing} from "../models/writing";
 import {advantages} from "../models/player-attributs/advantages";
+import {ChatService} from "./chat.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlayerService {
   players: Player[] = [];
-  constructor(private fertigkeitenService: FertigkeitenService, private route: ActivatedRoute) {
+  constructor(private fertigkeitenService: FertigkeitenService, private route: ActivatedRoute, private chatService: ChatService) {
     this.creatData();
   }
   getPlayer(id: number): Player {
@@ -101,7 +102,7 @@ export class PlayerService {
   creatPlayerTalents(fertigkeiten: Faehigkeiten[]): PlayerTalents[]{
     let playerTalents: PlayerTalents[] = [];
     fertigkeiten.forEach(element => {
-      let playerTalent: PlayerTalents = new PlayerTalents(element.shortTerm,0);
+      let playerTalent: PlayerTalents = new PlayerTalents(element.shortTerm,10);
         playerTalents.push(playerTalent)
     })
     return playerTalents;
@@ -129,5 +130,8 @@ export class PlayerService {
     let b: number = this.getPlayerPerID().spa;
       this.getPlayerPerID().spa = b + a;
     console.log(this.getPlayerPerID().spa)
+  }
+  diceRoll(talent: Faehigkeiten, player: Player) {
+      this.chatService.rollTalents(talent, player)
   }
 }
