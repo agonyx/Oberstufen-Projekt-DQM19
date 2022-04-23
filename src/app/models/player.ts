@@ -5,6 +5,7 @@ import {Spezies} from "./Spezies";
 import {PlayerTalents} from "./player-attributs/playerTalents";
 import {Language} from "./language";
 import {writing} from "./writing";
+import {advantages} from "./player-attributs/advantages";
 
 export class Player {
   constructor(public id: number,
@@ -17,7 +18,9 @@ export class Player {
               public spa: number,
               public talents: PlayerTalents[],
               public languages: Language[],
-              public writings: writing[]
+              public writings: writing[],
+              public vorteil: advantages[],
+              public nachteile: advantages[]
   ) {
 
   }

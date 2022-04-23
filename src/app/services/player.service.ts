@@ -10,6 +10,7 @@ import {Faehigkeiten} from "../models/fertigkeiten";
 import {ActivatedRoute} from "@angular/router";
 import {Language} from "../models/language";
 import {writing} from "../models/writing";
+import {advantages} from "../models/player-attributs/advantages";
 
 @Injectable({
   providedIn: 'root'
@@ -29,33 +30,45 @@ export class PlayerService {
   creatData() {
 
     let human: Spezies = new Spezies("Human",0, 5, -5, -5, 8);
-    let player1Stats: stats = new stats(12, 14, 14, 13, 12, 12, 13, 11);
+    let player1Stats: stats = new stats(12, 14, 14, 13, 12, 12, 12, 11);
     let player1PersonalData: Personaldata = new Personaldata("Jendar", "Korninger");
-    let player1BaseStats: Base = this.calcPlayerBaseStats(human, player1Stats);
+    let player1Vorteil: advantages[] = this.creatVorteile();
+    let player1Nachteile: advantages[] = this.creatNachteile();
+    let player1BaseStats: Base = this.calcPlayerBaseStats(human, player1Stats, player1Vorteil);
     let player1Talents: PlayerTalents[] = this.creatPlayerTalents(this.fertigkeitenService.fertigkeiten);
     let player1Languages: Language[] = this.creatLanguages();
     let player1writing: writing[] = this.creatwriting();
-    let player1: Player = new Player(0,1000, human, player1Stats, player1PersonalData, player1BaseStats, 3, 0, player1Talents, player1Languages, player1writing)
+    let player1: Player = new Player(0,1000, human, player1Stats, player1PersonalData, player1BaseStats, 3, 0, player1Talents, player1Languages, player1writing, player1Vorteil, player1Nachteile)
     this.players.push(player1);
   }
-  calcPlayerBaseStats(spezies: Spezies, pStats: stats) {
+  calcPlayerBaseStats(spezies: Spezies, pStats: stats, vorteile: advantages[]) {
     //pbs = playerBaseStats
     let pbs: Base = new Base(
       spezies.LepSpezies + pStats.KO+pStats.KO,
       0,
       0,
-      spezies.SKSpezies + ((pStats.MU+pStats.KL+pStats.IN)/6),
-      spezies.ZKSpezies + ((pStats.KO+pStats.KO+pStats.KK)/6),
-      pStats.GE/2,
-      (pStats.MU+pStats.GE)/2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      Math.round(spezies.SKSpezies + ((pStats.MU+pStats.KL+pStats.IN)/6)),
+      Math.round(spezies.ZKSpezies + ((pStats.KO+pStats.KO+pStats.KK)/6)),
+      Math.round(pStats.GE/2),
+      Math.round((pStats.MU+pStats.GE)/2),
       spezies.GesSpezies
     );
-    if(pStats.KL >= 12){
-      pbs.Asp = 20 + pStats.KL;
-    }
-    if(pStats.IN >= 12){
-      pbs.Kap = 20 + pStats.IN;
-    }
+    vorteile.forEach(element => {
+      if(element.name === "Zauberer"){
+        pbs.AspMax = 20 + pStats.KL;
+      } else if(element.name === "Geweihter") {
+        pbs.KapMax = 20 + pStats.IN;
+      }
+    })
+    pbs.Lepmax = pbs.Lepmax + pbs.LepBouth;
+    pbs.AspMax = pbs.AspMax + pbs.AspBouth;
+    pbs.KapMax = pbs.KapMax + pbs.KapBouth;
     return pbs;
   }
   creatLanguages(): Language[]{
@@ -73,6 +86,17 @@ export class PlayerService {
     let KuslikerZeichen: writing = new  writing(2,"Kusliker Zeichen");
     writings.push(KuslikerZeichen);
     return writings;
+  }
+  creatVorteile(): advantages[]{
+    let vorteile: advantages[] = [];
+    let zauberer: advantages = new advantages("Vorteil", 25, "Zauberer", "Der Zauberer erhält als Astralenergie- Grundwert 20 AsP. Der Vorteil beinhaltet nicht die Sonderfertigkeit Tradition (siehe Regelwerk Seite 275). Diese muss einzeln erworben werden. Jeder Zauberer muss mit einer Tradition starten (eine Tradition ist eine spezielle Sonderfertigkeit). Dieser Vorteil lässt sich im späteren Spielverlauf nicht mehr erwerben.", [])
+    vorteile.push(zauberer);
+    return vorteile;
+  }
+  creatNachteile(): advantages[]{
+    let nachteile: advantages[] = [];
+
+    return nachteile;
   }
   creatPlayerTalents(fertigkeiten: Faehigkeiten[]): PlayerTalents[]{
     let playerTalents: PlayerTalents[] = [];
