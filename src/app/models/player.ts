@@ -3,6 +3,9 @@ import {Base} from "./player-attributs/base";
 import {stats} from "./player-attributs/stats";
 import {Spezies} from "./Spezies";
 import {PlayerTalents} from "./player-attributs/playerTalents";
+import {Kampftechniken} from "./kampftechniken";
+import {Inventory} from "./inventory";
+
 
 export class Player {
   constructor(public id: number,
@@ -13,7 +16,10 @@ export class Player {
               public basestats: Base,
               public spg: number,
               public spa: number,
-              public talents: PlayerTalents[]
+              public talents: PlayerTalents[],
+              public inventar: Inventory,
+              public kampftechniken?: Kampftechniken[]
+
   ) {
 
   }

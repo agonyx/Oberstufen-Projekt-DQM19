@@ -1,5 +1,5 @@
 export class Ruestung{
-  constructor(public ruestung:string, public be: number, public GS_INI: number, public gewicht: number) {
+  constructor(public id:string,public ruestung:string,public rs: number, be: number, public gewicht: number) {
   }
 }
 

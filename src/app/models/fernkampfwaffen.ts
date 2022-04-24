@@ -1,6 +1,6 @@
 import {Kampftechniken} from "./kampftechniken";
 
 export class Fernkampfwaffen {
-  constructor(public waffe:string, public kampftechnik: Kampftechniken, public ladezeiten: number, public tp:string, public munition:number,public reichweite:number, public BF:number, public fernkampf:number, public gewicht: number) {
+  constructor(public id:string,public waffe:string, public kampftechnik: string, public ladezeiten: number, public tp:string, public munition:string,public reichweite:string, public BF:number,public gewicht: number, public fernkampf?:number) {
   }
 }

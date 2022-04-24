@@ -8,13 +8,17 @@ import {PlayerTalents} from "../models/player-attributs/playerTalents";
 import {FertigkeitenService} from "./fertigkeiten.service";
 import {Faehigkeiten} from "../models/fertigkeiten";
 import {ActivatedRoute} from "@angular/router";
+import {KampfserviceService} from "./kampfservice.service";
+import {Kampftechniken} from "../models/kampftechniken";
+import {Inventory} from "../models/inventory";
+import {InventoryService} from "./inventory.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlayerService {
   players: Player[] = [];
-  constructor(private fertigkeitenService: FertigkeitenService, private route: ActivatedRoute) {
+  constructor(private fertigkeitenService: FertigkeitenService, private route: ActivatedRoute,private ks: KampfserviceService, private invservice: InventoryService) {
     this.createData();
   }
   getPlayer(id: number): Player {
@@ -25,14 +29,59 @@ export class PlayerService {
     return this.getPlayer(id);
   }
   createData() {
-
+    //TODO use getInventory Method
+    let inv: Inventory = new Inventory();
     let human: Spezies = new Spezies("Human",0, 5, -5, -5, 8);
     let player1Stats: stats = new stats(12, 14, 14, 13, 12, 12, 13, 11);
     let player1PersonalData: Personaldata = new Personaldata("Jendar", "Korninger");
     let player1BaseStats: Base = this.calcPlayerBaseStats(human, player1Stats);
     let player1Talents: PlayerTalents[] = this.creatPlayerTalents(this.fertigkeitenService.fertigkeiten);
-    let player1: Player = new Player(0,1000, human, player1Stats, player1PersonalData, player1BaseStats, 3, 0, player1Talents)
+    let player1: Player = new Player(0,1000, human, player1Stats, player1PersonalData, player1BaseStats, 3, 0, player1Talents,inv)
+    let kf: Kampftechniken[] = this.calcKampftechniken(player1);
+    player1.kampftechniken = kf;
+    player1.inventar.addNW(this.invservice.);
+    player1.inventar.addFW(langbogen);
+    player1.inventar.addRuestung(plattenruestung);
     this.players.push(player1);
+
+  } //TODO write Method getInventory
+
+  getPlayerInventory(playerid: number){
+
+
+  }
+  calcKampftechniken(p: Player): Kampftechniken[]{
+    // GE/KK Leiteigenschaft Problemlösung
+    let biggah;
+    if (p.playerstats.KK > p.playerstats.GE) {
+      biggah = p.playerstats.KK;
+    } else {
+      biggah = p.playerstats.GE;
+    }
+    //Hashmap macht halt einfach alles einfacher
+    let map = new Map()
+      .set("A",1)
+      .set("B",2)
+      .set("C",3)
+      .set("D",4)
+      .set("FF", p.playerstats.FF)
+      .set("GE", p.playerstats.GE)
+      .set("KK", p.playerstats.KK)
+      .set("GE/KK", biggah);
+
+    let kst: Kampftechniken[] = this.ks.kf;
+
+
+    for(let e of kst) {
+      e.ktw = 6;
+      if (e.ktwextragekoppt != undefined){
+        e.ktw += (e.ktwextragekoppt*map.get(e.sf));
+      }
+      e.ATFK = e.ktw! + p.playerstats.MU;
+      e.PA = Math.ceil(e.ktw!/2) + (map.get(e.leiteigenschaft) - 8 / 3);
+
+    }
+    return kst;
   }
   calcPlayerBaseStats(spezies: Spezies, pStats: stats) {
     //pbs = playerBaseStats

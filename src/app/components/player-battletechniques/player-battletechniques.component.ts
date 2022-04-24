@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Kampftechniken} from "../../models/kampftechniken";
+import {PlayerService} from "../../services/player.service";
+import {Player} from "../../models/player";
 
 @Component({
   selector: 'app-player-battletechniques',
@@ -7,10 +9,13 @@ import {Kampftechniken} from "../../models/kampftechniken";
   styleUrls: ['./player-battletechniques.component.css']
 })
 export class PlayerBattletechniquesComponent implements OnInit {
-@Input() kampftechniken: Kampftechniken;
-  constructor() { }
+  @Input() player?: Player;
+  @Input() kampftechniken?: Kampftechniken[];
+  constructor(public playerservice: PlayerService) { }
 
   ngOnInit(): void {
+    this.player = this.playerservice.getPlayerPerID()
+
   }
 
 }

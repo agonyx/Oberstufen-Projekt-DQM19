@@ -135,5 +135,8 @@ export class FertigkeitenService {
     this.fertigkeiten = talents;
 
   }
+  createBattleTechniques(){
+
+  }
 
 }
