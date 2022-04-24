@@ -10,6 +10,7 @@ import {advantages} from "./player-attributs/advantages";
 export class Player {
   constructor(public id: number,
               public APg: number,
+              public Apa: number,
               public spezies: Spezies,
               public playerstats: stats,
               public playerPersonaldata: Personaldata,
@@ -20,7 +21,10 @@ export class Player {
               public languages: Language[],
               public writings: writing[],
               public vorteil: advantages[],
-              public nachteile: advantages[]
+              public nachteile: advantages[],
+              public LepBouth: number, public LepLost: number,
+              public AspBouth: number, public AspLost:number,
+              public KapBouth: number,public KapLost: number
   ) {
 
   }
