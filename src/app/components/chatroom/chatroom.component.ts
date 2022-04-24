@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ChatMessage} from "../../models/chat-message.model";
 import {ChatService} from "../../services/chat.service";
 import {Faehigkeiten} from "../../models/fertigkeiten";
 import {Player} from "../../models/player";
+import {PlayerService} from "../../services/player.service";
 
 @Component({
   selector: 'app-chatroom',
@@ -15,9 +16,10 @@ export class ChatroomComponent implements OnInit {
   wuerfelwunsch = false;
 
 
-  constructor(private chat: ChatService) { }
-
+  constructor(private chat: ChatService, private playerService: PlayerService) { }
+  @Input() player?: Player;
   ngOnInit(): void {
+    this.player = this.playerService.getPlayerPerID();
   }
 switchWuerfelwunschState(){
     if(this.wuerfelwunsch) {
@@ -30,7 +32,7 @@ switchWuerfelwunschState(){
   randomBetween(min: number, max: number):number {
   return Math.round(Math.random() * (max - min)+ min);
 }
-  roll(anzahlwuerfe: number, wuerfelseiten:number){
+  roll(anzahlwuerfe: number, wuerfelseiten:number, player?: Player){
     let string =""
     if(anzahlwuerfe != 0 && wuerfelseiten != 0) {
 
@@ -38,9 +40,13 @@ switchWuerfelwunschState(){
     for (let i = 0; i < anzahlwuerfe; i++){
       string += this.randomBetween(1,wuerfelseiten)+" "
     }
-
-      let message = new ChatMessage("Würfelbot", "Ich habe "+ this.anzahlwuerfe +"w"+this.wuerfelseiten + " für dich geworfen! \n Ergebnisse: " + string );
-      this.chat.sendChatMessage(message);
+      if(player){
+        let message = new ChatMessage(player?.playerPersonaldata.Name+" "+player?.playerPersonaldata.Lastname, "Ich habe "+ this.anzahlwuerfe +"w"+this.wuerfelseiten + " für dich geworfen! \n Ergebnisse: " + string );
+        this.chat.sendChatMessage(message);
+      } else {
+        let message = new ChatMessage("Würfelbot", "Ich habe "+ this.anzahlwuerfe +"w"+this.wuerfelseiten + " für dich geworfen! \n Ergebnisse: " + string );
+        this.chat.sendChatMessage(message);
+      }
   } else {
       alert("Werte können nicht 0 sein!")
     }

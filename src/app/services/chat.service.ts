@@ -85,7 +85,7 @@ getDB(): AngularFireDatabase{
             }
             break
           case "GE":
-            if(player.playerstats.GE > wuerf){
+            if(player.playerstats.GE < wuerf){
               drueber = drueber + (wuerf-player.playerstats.GE)
             }
             break
@@ -100,6 +100,8 @@ getDB(): AngularFireDatabase{
             }
             break
         }
+        console.log("Wurf"+i+" "+wuerf);
+        console.log("Drüber"+i+" "+drueber)
       }
       let lol: number = talent.Fw - drueber;
       console.log(lol)
@@ -115,10 +117,11 @@ getDB(): AngularFireDatabase{
         qs = 4;
       } else if (lol <= 15) {
         qs = 5;
-      } else {
+      } else if (lol > 15){
         qs = 6;
       }
     }
+    console.log(qs)
     return qs;
   }
 
