@@ -15,10 +15,14 @@ import {ChatService} from "../../../services/chat.service";
 export class BodyTalentsComponent implements OnInit {
   @Input() player?: Player;
   @Input() bodyTalents?: Faehigkeiten[];
-  constructor(private playerService: PlayerService) { }
+  constructor(private playerService: PlayerService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.player = this.playerService.getPlayerPerID();
+    let id = 0;
+    if(this.route.parent?.parent){
+      id = Number(this.route.parent?.parent.snapshot.paramMap.get('id'));
+    }
+    this.player = this.playerService.getPlayer(id);
     this.bodyTalents = this.playerService.getTalents(this.player, "b");
   }
   diceRoll(talent: Faehigkeiten) {

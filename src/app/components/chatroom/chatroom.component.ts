@@ -4,6 +4,7 @@ import {ChatService} from "../../services/chat.service";
 import {Faehigkeiten} from "../../models/fertigkeiten";
 import {Player} from "../../models/player";
 import {PlayerService} from "../../services/player.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-chatroom',
@@ -16,10 +17,11 @@ export class ChatroomComponent implements OnInit {
   wuerfelwunsch = false;
 
 
-  constructor(private chat: ChatService, private playerService: PlayerService) { }
+  constructor(private chat: ChatService, private playerService: PlayerService, private route: ActivatedRoute) { }
   @Input() player?: Player;
   ngOnInit(): void {
-    this.player = this.playerService.getPlayerPerID();
+    let id = Number(this.route.snapshot.paramMap.get('id'));
+    this.player = this.playerService.getPlayer(id);
   }
 switchWuerfelwunschState(){
     if(this.wuerfelwunsch) {

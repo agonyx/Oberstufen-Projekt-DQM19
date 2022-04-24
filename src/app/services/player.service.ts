@@ -12,6 +12,7 @@ import {Language} from "../models/language";
 import {writing} from "../models/writing";
 import {advantages} from "../models/player-attributs/advantages";
 import {ChatService} from "./chat.service";
+import {Observable, of} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -21,13 +22,14 @@ export class PlayerService {
   constructor(private fertigkeitenService: FertigkeitenService, private route: ActivatedRoute, private chatService: ChatService) {
     this.creatData();
   }
+  getObservabalPlayers():  Observable<Player[]>{
+    let players = of(this.players)
+    return players;
+  }
   getPlayer(id: number): Player {
     return this.players[id];
   }
-  getPlayerPerID(): Player {
-    let id = Number(this.route.snapshot.paramMap.get('id'));
-    return this.getPlayer(id);
-  }
+
   creatData() {
 
     // Generelle Spielwerte
@@ -36,25 +38,66 @@ export class PlayerService {
     let nachteile: advantages[] = this.creatNachteile();
     let languages: Language[] = this.creatLanguages();
     let writings: writing[] = this.creatWriting();
-    //PLayer 1 creat
+    //Player 1 (Jendar Korninger) creat
     let player1Stats: stats = new stats(12, 14, 14, 13, 12, 12, 12, 11);
     let player1PersonalData: Personaldata = new Personaldata("Jendar", "Korninger");
     let player1VorteileString: string[][] = [["Zauberer"],["I"]];
     let player1NachteileString: string[][] = [[],[]];
     let player1LanguagesString: string[][] = [["Garethi","Bosperano","Thorwahlsch"],["MS","III","II"]];
     let player1WritingString: string[] = ["Kusliker Zeichen"];
+    let FWs1: number[] = [0,0,4,3,0,7,4,4,0,4,7,0,0,0,7,2,4,7,0,5,5,0,4,0,0,0,3,7,4,0,0,3,4,4,3,8,0,12,3,5,3,0,12,0,0,10,4,0,0,4,1,0,0,11,1,0,0,0,1];
     let player1Vorteile: advantages[] = this.creatPlayerVorteile(vorteile, player1VorteileString);
     let player1Nachteile: advantages[] = this.creatPlayerNachteil(nachteile, player1NachteileString);
     let player1Base: Base = new Base(0,0,0,0,0,0,0,0);
-    let player1Talents: PlayerTalents[] = this.creatPlayerTalents(this.fertigkeitenService.fertigkeiten);
+    let player1Talents: PlayerTalents[] = this.creatPlayerTalents(FWs1, this.fertigkeitenService.fertigkeiten);
     let player1Languages: Language[] = this.creatPlayerLanguages(languages,player1LanguagesString)
     let player1writing: writing[] = this.creatPlayerWritings(writings,player1WritingString)
     let player1: Player = new Player(0,1000, 0, human, player1Stats, player1PersonalData, player1Base, 3, 0, player1Talents, player1Languages, player1writing, player1Vorteile, player1Nachteile,0,0,0,0,0,0)
     let player1BaseStats: Base = this.calcPlayerBaseStats(player1);
     player1.basestats = player1BaseStats;
-    let Apa: number = this.ApRechner(player1, this.fertigkeitenService.fertigkeiten);
-    player1.Apa = Apa;
+    let Apa1: number = this.ApRechner(player1, this.fertigkeitenService.fertigkeiten);
+    player1.Apa = Apa1;
     this.players.push(player1);
+    //Player 2 (Schmit Ranok) creat
+    let player2Stats: stats = new stats(13, 12, 11, 12, 14, 10, 14, 14);
+    let player2PersonalData: Personaldata = new Personaldata("Schmit", "Ranok", "Burgfalkenfels", "23. Boron. 1026",18,"männlich",190,86,"Schwarz","Grün","Frei","");
+    let player2VorteileString: string[][] = [[],[]];
+    let player2NachteileString: string[][] = [[],[]];
+    let player2LanguagesString: string[][] = [["Garethi","Tulamidya","Thorwahlsch"],["MS","II","I"]];
+    let player2WritingString: string[] = ["Kusliker Zeichen"];
+    let FWs2: number[] = [0,0,5,7,10,5,0,5,6,4,5,0,3,10,7,7,10,0,0,3,4,0,5,0,0,0,0,1,3,2,2,2,3,4,0,1,0,7,4,6,7,0,4,0,7,10,0,0,0,2,4,0,4,0,12,0,0,4,2];
+    let player2Vorteile: advantages[] = this.creatPlayerVorteile(vorteile, player2VorteileString);
+    let player2Nachteile: advantages[] = this.creatPlayerNachteil(nachteile, player2NachteileString);
+    let player2Base: Base = new Base(0,0,0,0,0,0,0,0);
+    let player2Talents: PlayerTalents[] = this.creatPlayerTalents(FWs2, this.fertigkeitenService.fertigkeiten);
+    let player2Languages: Language[] = this.creatPlayerLanguages(languages,player2LanguagesString)
+    let player2Writing: writing[] = this.creatPlayerWritings(writings,player2WritingString)
+    let player2: Player = new Player(1,1288, 0, human, player2Stats, player2PersonalData, player2Base, 3, 0, player2Talents, player2Languages, player2Writing, player2Vorteile, player2Nachteile,12,0,0,0,0,0)
+    let player2BaseStats: Base = this.calcPlayerBaseStats(player2);
+    player2.basestats = player2BaseStats;
+    let Apa2: number = this.ApRechner(player2, this.fertigkeitenService.fertigkeiten);
+    player2.Apa = Apa2;
+    this.players.push(player2);
+    //Player 3 (Vero Lurana) creat
+    let player3Stats: stats = new stats(12, 11, 14, 10, 14, 13, 12, 14);
+    let player3PersonalData: Personaldata = new Personaldata("Vero", "Lurana", "Burgfalkenfels", "9. Phex. 1024",20,"männlich",178,70,"Schwarz","Braun","Frei","");
+    let player3VorteileString: string[][] = [[],[]];
+    let player3NachteileString: string[][] = [[],[]];
+    let player3LanguagesString: string[][] = [["Garethi","Thorwahlsch","Tulamidya"],["MS","II","I"]];
+    let player3WritingString: string[] = [];
+    let FWs3: number[] = [0,0,11,9,6,6,4,3,0,10,0,0,11,4,0,5,4,0,3,0,0,5,2,12,7,0,10,6,10,7,3,1,0,3,0,1,0,2,0,4,0,0,4,0,0,3,0,0,0,2,4,1,8,0,1,0,0,0,4];
+    let player3Vorteile: advantages[] = this.creatPlayerVorteile(vorteile, player3VorteileString);
+    let player3Nachteile: advantages[] = this.creatPlayerNachteil(nachteile, player3NachteileString);
+    let player3Base: Base = new Base(0,0,0,0,0,0,0,0);
+    let player3Talents: PlayerTalents[] = this.creatPlayerTalents(FWs3, this.fertigkeitenService.fertigkeiten);
+    let player3Languages: Language[] = this.creatPlayerLanguages(languages,player3LanguagesString)
+    let player3Writing: writing[] = this.creatPlayerWritings(writings,player3WritingString)
+    let player3: Player = new Player(2,1288, 0, human, player3Stats, player3PersonalData, player3Base, 3, 0, player3Talents, player3Languages, player3Writing, player3Vorteile, player3Nachteile,0,0,0,0,0,0)
+    let player3BaseStats: Base = this.calcPlayerBaseStats(player3);
+    player3.basestats = player3BaseStats;
+    let Apa3: number = this.ApRechner(player3, this.fertigkeitenService.fertigkeiten);
+    player3.Apa = Apa3;
+    this.players.push(player3);
   }
   calcPlayerBaseStats(player: Player) {
     let pbs: Base = new Base(
@@ -81,12 +124,14 @@ export class PlayerService {
   }
   creatLanguages(): Language[]{
     let languages: Language[]= []
-    let Garethi: Language = new Language("Garethi",0,false);
-    let Bosperano: Language = new Language("Bosperano",0,false);
-    let Thorwahlsch: Language = new Language("Thorwahlsch",0,false);
-    languages.push(Garethi);
-    languages.push(Bosperano);
-    languages.push(Thorwahlsch);
+    let garethi: Language = new Language("Garethi",0,false);
+    let bosperano: Language = new Language("Bosperano",0,false);
+    let thorwahlsch: Language = new Language("Thorwahlsch",0,false);
+    let tulamidya: Language = new Language("Tulamidya",0,false)
+    languages.push(garethi);
+    languages.push(bosperano);
+    languages.push(tulamidya);
+    languages.push(thorwahlsch);
     return languages;
   }
   creatWriting(): writing[]{
@@ -220,14 +265,7 @@ export class PlayerService {
     })
     return playerWritings;
   }
-  creatPlayerTalents(fertigkeiten: Faehigkeiten[]): PlayerTalents[]{
-    let playerTalents: PlayerTalents[] = [];
-    fertigkeiten.forEach(element => {
-      let playerTalent: PlayerTalents = new PlayerTalents(element.shortTerm,0);
-        playerTalents.push(playerTalent)
-    })
-    return playerTalents;
-  }
+
   getTalents(player: Player, category: string): Faehigkeiten[] {
     let saveTalents: Faehigkeiten[] = [];
     this.fertigkeitenService.fertigkeiten.forEach(element => {
@@ -243,14 +281,14 @@ export class PlayerService {
     })
     return saveTalents;
   }
-  Schicksalspunkteverbleibend():number {
-    let currentsp: number = this.getPlayerPerID().spg - this.getPlayerPerID().spa;
+  Schicksalspunkteverbleibend(id: number):number {
+    let currentsp: number = this.getPlayer(id).spg - this.getPlayer(id).spa;
     return currentsp;
   }
-  SchicksalspunkteVeraendern(a: number) {
-    let b: number = this.getPlayerPerID().spa;
-      this.getPlayerPerID().spa = b + a;
-    console.log(this.getPlayerPerID().spa)
+  SchicksalspunkteVeraendern(a: number, id:number) {
+    let b: number = this.getPlayer(id).spa;
+      this.getPlayer(id).spa = b + a;
+    console.log(this.getPlayer(id).spa)
   }
   diceRoll(talent: Faehigkeiten, player: Player) {
       this.chatService.rollTalents(talent, player)
@@ -363,5 +401,13 @@ export class PlayerService {
     })
     console.log(Apa)
     return Apa;
+  }
+  creatPlayerTalents(Fw: number[], fertigkeiten: Faehigkeiten[]): PlayerTalents[]{
+    let playerTalents: PlayerTalents[] = [];
+    fertigkeiten.forEach((talent,index) => {
+      let playertalent: PlayerTalents = new PlayerTalents(talent.shortTerm,Fw[index])
+      playerTalents.push(playertalent)
+    })
+    return playerTalents;
   }
 }

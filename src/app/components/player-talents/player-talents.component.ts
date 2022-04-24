@@ -11,10 +11,15 @@ import {Faehigkeiten} from "../../models/fertigkeiten";
 })
 export class PlayerTalentsComponent implements OnInit {
   @Input() player?: Player;
-  constructor(private playerService: PlayerService) { }
+  constructor(private playerService: PlayerService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.player = this.playerService.getPlayerPerID();
+    let id = 0;
+    if(this.route.parent){
+      id = Number(this.route.parent.snapshot.paramMap.get('id'));
+    }
+    console.log(id)
+    this.player = this.playerService.getPlayer(id);
   }
 
 

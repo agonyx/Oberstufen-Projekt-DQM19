@@ -1,6 +1,6 @@
 <div class="container" *ngIf="player">
   <div class="row">
-    <div class="col-2">
+    <div class="col-3">
       <label for="playerName">Name:</label>
       <output type="text" id="playerName" name="playerName">{{player.playerPersonaldata.Name}}</output>
     </div>
@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-2">
+    <div class="col-3">
       <label for="playerFamilyName">Familie:</label>
       <output type="text" id="playerFamilyName" name="playerFamilyName">{{player.playerPersonaldata.Lastname}}</output>
     </div>
@@ -30,7 +30,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-2">
+    <div class="col-3">
       <label for="playerBirthdate">Geburtsdatum:</label>
       <output type="text" id="playerBirthdate" name="playerBirthdate">{{player.playerPersonaldata.Geburtsdatum}}</output>
     </div>
@@ -48,7 +48,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-2">
+    <div class="col-3">
       <label for="playerSpezis">Spezies:</label>
       <output type="text" id="playerSpezis" name="playerSpezis">{{player.spezies.Name}}</output>
     </div>
@@ -66,7 +66,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-2">
+    <div class="col-3">
       <label for="playerHairColor">Haarfarbe:</label>
       <output type="text" id="playerHairColor" name="playerHairColor">{{player.playerPersonaldata.Haarfarbe}}</output>
     </div>
@@ -83,7 +83,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-2">
+    <div class="col-3">
       <label for="playerCultur">Kultur:</label>
       <output type="text" id="playerCultur" name="playerCultur"></output>
     </div>
@@ -95,12 +95,12 @@
 
     </div>
     <div class="col-2">
-      <label for="playerGes">Ges:</label>
-      <output type="text" id="playerGes" name="playerGes">{{player.basestats.Ges}}</output>
+      <label for="playerAw">Aw:</label>
+      <output type="text" id="playerAw" name="playerAw">{{player.basestats.Aw}}</output>
     </div>
   </div>
   <div class="row">
-    <div class="col-2">
+    <div class="col-3">
       <label for="playerTitle">Titel:</label>
       <output type="text" id="playerTitle" name="playerTitle">{{player.playerPersonaldata.titel}}</output>
     </div>
@@ -117,8 +117,15 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-2">
+    <div class="col-3">
       <p>Schicksalspunkte:</p>
+    </div>
+    <div class="col-4">
+
+    </div>
+    <div class="col-2">
+      <label for="playerGes">Ges:</label>
+      <output type="text" id="playerGes" name="playerGes">{{player.basestats.Ges}}</output>
     </div>
   </div>
   <div class="row">
@@ -128,13 +135,13 @@
     </div>
     <div class="col-2">
       <label for="playerSchicksalspunkteVerbleibend">Aktuell:</label>
-      <output type="number" id="playerSchicksalspunkteVerbleibend" name="playerSchicksalspunkteVerbleibend" min="0" max="3">{{playerServicen.Schicksalspunkteverbleibend()}}</output>
+      <output type="number" id="playerSchicksalspunkteVerbleibend" name="playerSchicksalspunkteVerbleibend" min="0" max="3">{{playerServicen.Schicksalspunkteverbleibend(player.id)}}</output>
     </div>
     <div class="col-1">
-      <button id="plusbuttonSp" (click)="playerServicen.SchicksalspunkteVeraendern(-1)">+</button>
+      <button id="plusbuttonSp" (click)="playerServicen.SchicksalspunkteVeraendern(-1, player.id)">+</button>
     </div>
     <div class="col-1">
-      <button id="minusbuttonSp" (click)="playerServicen.SchicksalspunkteVeraendern(1)">-</button>
+      <button id="minusbuttonSp" (click)="playerServicen.SchicksalspunkteVeraendern(1, player.id)">-</button>
     </div>
   </div>
   <div class="row">
