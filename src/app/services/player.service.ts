@@ -38,7 +38,7 @@ export class PlayerService {
     let nachteile: advantages[] = this.creatNachteile();
     let languages: Language[] = this.creatLanguages();
     let writings: writing[] = this.creatWriting();
-    //Player 1 (Jendar Korninger) creat
+    //Player 1 (Jendar Korninger) create
     let player1Stats: stats = new stats(12, 14, 14, 13, 12, 12, 12, 11);
     let player1PersonalData: Personaldata = new Personaldata("Jendar", "Korninger");
     let player1VorteileString: string[][] = [["Zauberer"],["I"]];
@@ -58,7 +58,7 @@ export class PlayerService {
     let Apa1: number = this.ApRechner(player1, this.fertigkeitenService.fertigkeiten);
     player1.Apa = Apa1;
     this.players.push(player1);
-    //Player 2 (Schmit Ranok) creat
+    //Player 2 (Schmit Ranok) create
     let player2Stats: stats = new stats(13, 12, 11, 12, 14, 10, 14, 14);
     let player2PersonalData: Personaldata = new Personaldata("Schmit", "Ranok", "Burgfalkenfels", "23. Boron. 1026",18,"männlich",190,86,"Schwarz","Grün","Frei","");
     let player2VorteileString: string[][] = [[],[]];
@@ -78,7 +78,7 @@ export class PlayerService {
     let Apa2: number = this.ApRechner(player2, this.fertigkeitenService.fertigkeiten);
     player2.Apa = Apa2;
     this.players.push(player2);
-    //Player 3 (Vero Lurana) creat
+    //Player 3 (Vero Lurana) create
     let player3Stats: stats = new stats(12, 11, 14, 10, 14, 13, 12, 14);
     let player3PersonalData: Personaldata = new Personaldata("Vero", "Lurana", "Burgfalkenfels", "9. Phex. 1024",20,"männlich",178,70,"Schwarz","Braun","Frei","");
     let player3VorteileString: string[][] = [[],[]];
