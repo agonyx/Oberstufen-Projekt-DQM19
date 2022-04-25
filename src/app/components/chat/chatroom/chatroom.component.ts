@@ -1,10 +1,10 @@
 import {AppComponent} from "../../../app.component";
 import {Component, Input, OnInit} from '@angular/core';
-import {ChatMessage} from "../../models/chat-message.model";
-import {ChatService} from "../../services/chat.service";
-import {Faehigkeiten} from "../../models/fertigkeiten";
-import {Player} from "../../models/player";
-import {PlayerService} from "../../services/player.service";
+import {ChatMessage} from "../../../models/chat-message.model";
+import {ChatService} from "../../../services/chat.service";
+import {Faehigkeiten} from "../../../models/fertigkeiten";
+import {Player} from "../../../models/player";
+import {PlayerService} from "../../../services/player.service";
 import {ActivatedRoute} from "@angular/router";
 
 
@@ -18,9 +18,9 @@ export class ChatroomComponent implements OnInit {
   wuerfelseiten = 0;
   wuerfelwunsch = false;
 
-  constructor(private chat: ChatService, private playerService: PlayerService, private route: ActivatedRoute) { 
+  constructor(private chat: ChatService, private playerService: PlayerService, private route: ActivatedRoute) {
  //Test --- If message amount > 25 and everything works then fine
-    AppComponent.initialload = true; 
+    AppComponent.initialload = true;
 	}
   @Input() player?: Player;
   ngOnInit(): void {

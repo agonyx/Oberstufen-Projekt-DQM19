@@ -4,7 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Player} from "../../../models/player";
 import {FertigkeitenService} from "../../../services/fertigkeiten.service";
 import {Faehigkeiten} from "../../../models/fertigkeiten";
-import {ChatroomComponent} from "../../chatroom/chatroom.component";
+import {ChatroomComponent} from "../../chat/chatroom/chatroom.component";
 import {ChatService} from "../../../services/chat.service";
 
 @Component({
