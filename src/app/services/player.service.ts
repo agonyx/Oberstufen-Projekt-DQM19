@@ -45,14 +45,17 @@ export class PlayerService {
     player1.inventar.addNW(<Nahkampfwaffen>this.invservice.getItem("NW", "NW-1"));
     player1.inventar.addNW(<Nahkampfwaffen>this.invservice.getItem("NW", "NW-3"));
     player1.inventar.addRuestung(<Ruestung>this.invservice.getItem("R","R-2"));
-    console.log(player1.inventar.ruestung![1])
     this.players.push(player1);
 
   } //TODO write Method getInventory
 
   getPlayerInventory(playerid: number){
-
-
+    for(let i of this.players) {
+      if(i.id == playerid) {
+        return i
+      }
+    }
+    throw Error("Player Inventory couldn't be found!")
   }
   calcKampftechniken(p: Player): Kampftechniken[]{
     // GE/KK Leiteigenschaft Problemlösung

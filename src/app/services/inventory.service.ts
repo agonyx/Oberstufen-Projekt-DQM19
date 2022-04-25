@@ -56,39 +56,31 @@ export class InventoryService {
   }
   //TODO
   getItem(itemType: string,itemID: string) {
-    if(itemType == "NW"){
-        for (let i of this.nahkampfwaffen){
-          if(i.id == "itemID") {
+    if(itemType.match("NW")){
+        for (let i of this.nahkampfwaffen) {
+          if (i.id.match(itemID)) {
             return i;
-          } else {
-            throw Error("Item couldn't be found!");
           }
         }
       throw Error("Item couldn't be found!");
-    } else if (itemType == "FW"){
+    } else if (itemType.match("FW")){
       for (let i of this.fernkampfwaffen){
-        if(i.id == "itemID") {
+        if(i.id.match(itemID)) {
           return i;
-        } else {
-          throw Error("Item couldn't be found!");
         }
       }
       throw Error("Item couldn't be found!");
-    } else if (itemType == "R"){
+    } else if (itemType.match("R")){
       for (let i of this.ruestungen){
-        if(i.id =="itemID") {
+        if(i.id.match(itemID)) {
           return i;
-        } else {
-          throw Error("Item couldn't be found!");
         }
       }
       throw Error("Item couldn't be found!");
-    } else if (itemType == "PW") {
+    } else if (itemType.match("PW")) {
       for (let i of this.parrierwaffen){
-        if(i.id == "itemID") {
+        if(i.id.match(itemID)) {
           return i;
-        } else {
-          throw Error("Item couldn't be found!");
         }
       }
       throw Error("Item couldn't be found!");
