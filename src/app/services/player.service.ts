@@ -31,7 +31,6 @@ export class PlayerService {
     return this.getPlayer(id);
   }
   createData() {
-    //TODO use getInventory Method
     let inv: Inventory = new Inventory();
     let human: Spezies = new Spezies("Human",0, 5, -5, -5, 8);
     let player1Stats: stats = new stats(12, 14, 14, 13, 12, 12, 13, 11);
@@ -41,13 +40,12 @@ export class PlayerService {
     let player1: Player = new Player(0,1000, human, player1Stats, player1PersonalData, player1BaseStats, 3, 0, player1Talents,inv)
     let kf: Kampftechniken[] = this.calcKampftechniken(player1);
     player1.kampftechniken = kf;
-    //TODO
     player1.inventar.addNW(<Nahkampfwaffen>this.invservice.getItem("NW", "NW-1"));
     player1.inventar.addNW(<Nahkampfwaffen>this.invservice.getItem("NW", "NW-3"));
     player1.inventar.addRuestung(<Ruestung>this.invservice.getItem("R","R-2"));
     this.players.push(player1);
 
-  } //TODO write Method getInventory
+  }
 
   getPlayerInventory(playerid: number){
     for(let i of this.players) {
