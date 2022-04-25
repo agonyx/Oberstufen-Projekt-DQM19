@@ -26,7 +26,7 @@ import {Observable, of} from "rxjs";
 export class PlayerService {
   players: Player[] = [];
   constructor(private fertigkeitenService: FertigkeitenService, private route: ActivatedRoute, private chatService: ChatService, private ks: KampfserviceService, private invservice: InventoryService) {
-    this.creatData();
+    this.createData();
   }
   getObservabalPlayers():  Observable<Player[]>{
     let players = of(this.players)
@@ -38,7 +38,7 @@ export class PlayerService {
 
   createData() {
 	// Generelle Spielwerte
-    let inv: Inventory = new Inventory();
+
     let human: Spezies = new Spezies("Human",0, 5, -5, -5, 8);
     let vorteile: advantages[] = this.creatVorteile();
     let nachteile: advantages[] = this.creatNachteile();
@@ -52,17 +52,18 @@ export class PlayerService {
     let player1LanguagesString: string[][] = [["Garethi","Bosperano","Thorwahlsch"],["MS","III","II"]];
     let player1WritingString: string[] = ["Kusliker Zeichen"];
     let FWs1: number[] = [0,0,4,3,0,7,4,4,0,4,7,0,0,0,7,2,4,7,0,5,5,0,4,0,0,0,3,7,4,0,0,3,4,4,3,8,0,12,3,5,3,0,12,0,0,10,4,0,0,4,1,0,0,11,1,0,0,0,1];
+    let inv1: Inventory = new Inventory();
     let player1Vorteile: advantages[] = this.creatPlayerVorteile(vorteile, player1VorteileString);
     let player1Nachteile: advantages[] = this.creatPlayerNachteil(nachteile, player1NachteileString);
     let player1Base: Base = new Base(0,0,0,0,0,0,0,0);
     let player1Talents: PlayerTalents[] = this.creatPlayerTalents(FWs1, this.fertigkeitenService.fertigkeiten);
     let player1Languages: Language[] = this.creatPlayerLanguages(languages,player1LanguagesString)
     let player1writing: writing[] = this.creatPlayerWritings(writings,player1WritingString)
-    let player1: Player = new Player(0,1000, 0, human, player1Stats, player1PersonalData, player1Base, 3, 0, player1Talents, inv, player1Languages, player1writing, player1Vorteile, player1Nachteile,0,0,0,0,0,0)
+    let player1: Player = new Player(0,1000, 0, human, player1Stats, player1PersonalData, player1Base, 3, 0, player1Talents, inv1, player1Languages, player1writing, player1Vorteile, player1Nachteile,0,0,0,0,0,0)
     let player1BaseStats: Base = this.calcPlayerBaseStats(player1);
     player1.basestats = player1BaseStats;
-    let kf: Kampftechniken[] = this.calcKampftechniken(player1);
-    player1.kampftechniken = kf;
+    let kf1: Kampftechniken[] = this.calcKampftechniken(player1);
+    player1.kampftechniken = kf1;
     player1.inventar.addNW(<Nahkampfwaffen>this.invservice.getItem("NW", "NW-1"));
     player1.inventar.addNW(<Nahkampfwaffen>this.invservice.getItem("NW", "NW-3"));
     player1.inventar.addRuestung(<Ruestung>this.invservice.getItem("R","R-2"));
@@ -77,15 +78,21 @@ export class PlayerService {
     let player2LanguagesString: string[][] = [["Garethi","Tulamidya","Thorwahlsch"],["MS","II","I"]];
     let player2WritingString: string[] = ["Kusliker Zeichen"];
     let FWs2: number[] = [0,0,5,7,10,5,0,5,6,4,5,0,3,10,7,7,10,0,0,3,4,0,5,0,0,0,0,1,3,2,2,2,3,4,0,1,0,7,4,6,7,0,4,0,7,10,0,0,0,2,4,0,4,0,12,0,0,4,2];
+    let inv2: Inventory = new Inventory();
     let player2Vorteile: advantages[] = this.creatPlayerVorteile(vorteile, player2VorteileString);
     let player2Nachteile: advantages[] = this.creatPlayerNachteil(nachteile, player2NachteileString);
     let player2Base: Base = new Base(0,0,0,0,0,0,0,0);
     let player2Talents: PlayerTalents[] = this.creatPlayerTalents(FWs2, this.fertigkeitenService.fertigkeiten);
     let player2Languages: Language[] = this.creatPlayerLanguages(languages,player2LanguagesString)
     let player2Writing: writing[] = this.creatPlayerWritings(writings,player2WritingString)
-    let player2: Player = new Player(1,1288, 0, human, player2Stats, player2PersonalData, player2Base, 3, 0, player2Talents, player2Languages, player2Writing, player2Vorteile, player2Nachteile,12,0,0,0,0,0)
+    let player2: Player = new Player(1,1288, 0, human, player2Stats, player2PersonalData, player2Base, 3, 0, player2Talents, inv2,player2Languages, player2Writing, player2Vorteile, player2Nachteile,12,0,0,0,0,0)
     let player2BaseStats: Base = this.calcPlayerBaseStats(player2);
     player2.basestats = player2BaseStats;
+    let kf2: Kampftechniken[] = this.calcKampftechniken(player2);
+    player2.kampftechniken = kf2;
+    player2.inventar.addNW(<Nahkampfwaffen>this.invservice.getItem("NW", "NW-1"));
+    player2.inventar.addNW(<Nahkampfwaffen>this.invservice.getItem("NW", "NW-3"));
+    player2.inventar.addRuestung(<Ruestung>this.invservice.getItem("R","R-2"));
     let Apa2: number = this.ApRechner(player2, this.fertigkeitenService.fertigkeiten);
     player2.Apa = Apa2;
     this.players.push(player2);
@@ -97,15 +104,21 @@ export class PlayerService {
     let player3LanguagesString: string[][] = [["Garethi","Thorwahlsch","Tulamidya"],["MS","II","I"]];
     let player3WritingString: string[] = [];
     let FWs3: number[] = [0,0,11,9,6,6,4,3,0,10,0,0,11,4,0,5,4,0,3,0,0,5,2,12,7,0,10,6,10,7,3,1,0,3,0,1,0,2,0,4,0,0,4,0,0,3,0,0,0,2,4,1,8,0,1,0,0,0,4];
+    let inv3: Inventory = new Inventory();
     let player3Vorteile: advantages[] = this.creatPlayerVorteile(vorteile, player3VorteileString);
     let player3Nachteile: advantages[] = this.creatPlayerNachteil(nachteile, player3NachteileString);
     let player3Base: Base = new Base(0,0,0,0,0,0,0,0);
     let player3Talents: PlayerTalents[] = this.creatPlayerTalents(FWs3, this.fertigkeitenService.fertigkeiten);
     let player3Languages: Language[] = this.creatPlayerLanguages(languages,player3LanguagesString)
     let player3Writing: writing[] = this.creatPlayerWritings(writings,player3WritingString)
-    let player3: Player = new Player(2,1288, 0, human, player3Stats, player3PersonalData, player3Base, 3, 0, player3Talents, player3Languages, player3Writing, player3Vorteile, player3Nachteile,0,0,0,0,0,0)
+    let player3: Player = new Player(2,1288, 0, human, player3Stats, player3PersonalData, player3Base, 3, 0, player3Talents, inv3, player3Languages, player3Writing, player3Vorteile, player3Nachteile,0,0,0,0,0,0)
     let player3BaseStats: Base = this.calcPlayerBaseStats(player3);
     player3.basestats = player3BaseStats;
+    let kf3: Kampftechniken[] = this.calcKampftechniken(player3);
+    player3.kampftechniken = kf3;
+    player3.inventar.addNW(<Nahkampfwaffen>this.invservice.getItem("NW", "NW-1"));
+    player3.inventar.addNW(<Nahkampfwaffen>this.invservice.getItem("NW", "NW-3"));
+    player3.inventar.addRuestung(<Ruestung>this.invservice.getItem("R","R-2"));
     let Apa3: number = this.ApRechner(player3, this.fertigkeitenService.fertigkeiten);
     player3.Apa = Apa3;
     this.players.push(player3);
