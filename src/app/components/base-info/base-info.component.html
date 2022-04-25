@@ -1,76 +1,183 @@
 <div class="container" *ngIf="player">
   <div class="row">
-    <div class="col-2">
+    <div class="col-3">
       <label for="playerName">Name:</label>
       <output type="text" id="playerName" name="playerName">{{player.playerPersonaldata.Name}}</output>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-2">
-      <label for="playerName">Familie:</label>
-      <output type="text" id="playerFamilyName" name="playerName">{{player.playerPersonaldata.Lastname}}</output>
+    <div class="col-4">
+
     </div>
     <div class="col-2">
-      <label for="playerName">Geburtsort:</label>
-      <output type="text" id="playerBirthplace" name="playerName">{{player.playerPersonaldata.Geburtsort}}</output>
+      <label for="playerLepMax">Lep Max:</label>
+      <output type="text" id="playerLepMax" name="playerLepMax">{{player.basestats.Lepmax}}</output>
     </div>
   </div>
   <div class="row">
-    <div class="col-2">
-      <label for="playerName">Geburtsdatum:</label>
-      <output type="text" id="playerBirthdate" name="playerName">{{player.playerPersonaldata.Geburtsdatum}}</output>
+    <div class="col-3">
+      <label for="playerFamilyName">Familie:</label>
+      <output type="text" id="playerFamilyName" name="playerFamilyName">{{player.playerPersonaldata.Lastname}}</output>
     </div>
     <div class="col-2">
-      <label for="playerName">Alter:</label>
-      <output type="text" id="playerAge" name="playerName">{{player.playerPersonaldata.alter}}</output>
+      <label for="playerBirthplace">Geburtsort:</label>
+      <output type="text" id="playerBirthplace" name="playerBirthplace">{{player.playerPersonaldata.Geburtsort}}</output>
     </div>
     <div class="col-2">
-      <label for="playerName">Geschlecht:</label>
-      <output type="text" id="playerGender" name="playerName">{{player.playerPersonaldata.geschlecht}}</output>
+
+    </div>
+    <div class="col-2">
+      <label for="playerAspMax">Asp Max:</label>
+      <output type="text" id="playerAspMax" name="playerAspMax">{{player.basestats.AspMax}}</output>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <label for="playerBirthdate">Geburtsdatum:</label>
+      <output type="text" id="playerBirthdate" name="playerBirthdate">{{player.playerPersonaldata.Geburtsdatum}}</output>
+    </div>
+    <div class="col-2">
+      <label for="playerAge">Alter:</label>
+      <output type="text" id="playerAge" name="playerAge">{{player.playerPersonaldata.alter}}</output>
+    </div>
+    <div class="col-2">
+      <label for="playerGender">Geschlecht:</label>
+      <output type="text" id="playerGender" name="playerGender">{{player.playerPersonaldata.geschlecht}}</output>
+    </div>
+    <div class="col-2">
+      <label for="playerKapMax">Kap Max:</label>
+      <output type="text" id="playerKapMax" name="playerKapMax">{{player.basestats.KapMax}}</output>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <label for="playerSpezis">Spezies:</label>
+      <output type="text" id="playerSpezis" name="playerSpezis">{{player.spezies.Name}}</output>
+    </div>
+    <div class="col-2">
+      <label for="playerHight">Größe:</label>
+      <output type="text" id="playerHight" name="playerHight">{{player.playerPersonaldata.groesse}}</output>
+    </div>
+    <div class="col-2">
+      <label for="playerWeight">Gewicht:</label>
+      <output type="text" id="playerWeight" name="playerWeight">{{player.playerPersonaldata.gewicht}}</output>
+    </div>
+    <div class="col-2">
+      <label for="playerSk">Sk:</label>
+      <output type="text" id="playerSk" name="playerSk">{{player.basestats.Sk}}</output>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <label for="playerHairColor">Haarfarbe:</label>
+      <output type="text" id="playerHairColor" name="playerHairColor">{{player.playerPersonaldata.Haarfarbe}}</output>
+    </div>
+    <div class="col-2">
+      <label for="playerEyeColor">Augenfarbe:</label>
+      <output type="text" id="playerEyeColor" name="playerEyeColor">{{player.playerPersonaldata.Augenfarbe}}</output>
+    </div>
+    <div class="col-2">
+
+    </div>
+    <div class="col-2">
+      <label for="playerZk">Zk:</label>
+      <output type="text" id="playerZk" name="playerZk">{{player.basestats.Zk}}</output>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <label for="playerCultur">Kultur:</label>
+      <output type="text" id="playerCultur" name="playerCultur"></output>
+    </div>
+    <div class="col-2">
+      <label for="playerProfession">Profession:</label>
+      <output type="text" id="playerProfession" name="playerProfession"></output>
+    </div>
+    <div class="col-2">
+
+    </div>
+    <div class="col-2">
+      <label for="playerAw">Aw:</label>
+      <output type="text" id="playerAw" name="playerAw">{{player.basestats.Aw}}</output>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <label for="playerTitle">Titel:</label>
+      <output type="text" id="playerTitle" name="playerTitle">{{player.playerPersonaldata.titel}}</output>
+    </div>
+    <div class="col-2">
+      <label for="playerSocialstatus">Sozial:</label>
+      <output type="text" id="playerSocialstatus" name="playerSocialstatus">{{player.playerPersonaldata.Sozialstatus}}</output>
+    </div>
+    <div class="col-2">
+
+    </div>
+    <div class="col-2">
+      <label for="playerIni">Ini:</label>
+      <output type="text" id="playerIni" name="playerIni">{{player.basestats.Ini}}</output>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <p>Schicksalspunkte:</p>
+    </div>
+    <div class="col-4">
+
+    </div>
+    <div class="col-2">
+      <label for="playerGes">Ges:</label>
+      <output type="text" id="playerGes" name="playerGes">{{player.basestats.Ges}}</output>
     </div>
   </div>
   <div class="row">
     <div class="col-2">
-      <label for="playerName">Spezies:</label>
-      <output type="text" id="playerSpezis" name="playerName">{{player.spezies.Name}}</output>
+      <label for="playerSchicksalspunkteGesamt">Gesamt:</label>
+      <output type="number" id="playerSchicksalspunkteGesamt" name="playerSchicksalspunkteGesamt">{{player.spg}}</output>
     </div>
     <div class="col-2">
-      <label for="playerName">Größe:</label>
-      <output type="text" id="playerHight" name="playerName">{{player.playerPersonaldata.groesse}}</output>
+      <label for="playerSchicksalspunkteVerbleibend">Aktuell:</label>
+      <output type="number" id="playerSchicksalspunkteVerbleibend" name="playerSchicksalspunkteVerbleibend" min="0" max="3">{{playerServicen.Schicksalspunkteverbleibend(player.id)}}</output>
     </div>
-    <div class="col-2">
-      <label for="playerName">Gewicht:</label>
-      <output type="text" id="playerWeight" name="playerName">{{player.playerPersonaldata.gewicht}}</output>
+    <div class="col-1">
+      <button id="plusbuttonSp" (click)="playerServicen.SchicksalspunkteVeraendern(-1, player.id)">+</button>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-2">
-      <label for="playerName">Haarfarbe:</label>
-      <output type="text" id="playerHairColor" name="playerName">{{player.playerPersonaldata.Haarfarbe}}</output>
-    </div>
-    <div class="col-2">
-      <label for="playerName">Augenfarbe:</label>
-      <output type="text" id="playerEyeColor" name="playerName">{{player.playerPersonaldata.Augenfarbe}}</output>
+    <div class="col-1">
+      <button id="minusbuttonSp" (click)="playerServicen.SchicksalspunkteVeraendern(1, player.id)">-</button>
     </div>
   </div>
   <div class="row">
-    <div class="col-2">
-      <label for="playerName">Kultur:</label>
-      <output type="text" id="playerCultur" name="playerName"></output>
-    </div>
-    <div class="col-2">
-      <label for="playerName">Profession:</label>
-      <output type="text" id="playerProfession" name="playerName"></output>
+    <div class="col">
+      <table>
+        <thead>
+          <tr>
+            <th>Sprache</th>
+            <th>Level</th>
+            <th>&#160;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table" *ngFor="let l of player.languages">
+            <td>{{l.name}}</td>
+            <td>{{l.level}}</td>
+            <td *ngIf="l.MS">(MS)</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
   <div class="row">
-    <div class="col-2">
-      <label for="playerName">Titel:</label>
-      <output type="text" id="playerTitle" name="playerName">{{player.playerPersonaldata.titel}}</output>
-    </div>
-    <div class="col-2">
-      <label for="playerName">Sozial:</label>
-      <output type="text" id="playerSocialstatus" name="playerName">{{player.playerPersonaldata.Sozialstatus}}</output>
+    <div class="col">
+      <table>
+        <thead>
+        <tr>
+          <th>Schrift</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="table" *ngFor="let w of player.writings">
+          <td>{{w.name}}</td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

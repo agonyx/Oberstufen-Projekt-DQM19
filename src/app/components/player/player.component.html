@@ -1,12 +1,23 @@
 <div *ngIf="player">
   <h2>{{player.playerPersonaldata.Name}} {{player.playerPersonaldata.Lastname}}</h2>
   <div>
+    MU: {{player.playerstats.MU}}
+    KL: {{player.playerstats.KL}}
+    IN: {{player.playerstats.IN}}
+    CH: {{player.playerstats.CH}}
+    FF: {{player.playerstats.FF}}
+    GE: {{player.playerstats.GE}}
+    KO: {{player.playerstats.KO}}
+    KK: {{player.playerstats.KK}}
+  </div>
+  <div>
     <nav>
       <ul>
         <li><a class="nav-link" routerLink='/player/{{player.id}}/base-info' >Charakter</a></li>
         <li><a class="nav-link" routerLink='/player/{{player.id}}/talents' >Fertigkeiten</a></li>
       </ul>
     </nav>
+
 
     <router-outlet></router-outlet>
   </div>

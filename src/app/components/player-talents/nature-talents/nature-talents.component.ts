@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Player} from "../../../models/player";
 import {Faehigkeiten} from "../../../models/fertigkeiten";
 import {PlayerService} from "../../../services/player.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-nature-talents',
@@ -11,11 +12,20 @@ import {PlayerService} from "../../../services/player.service";
 export class NatureTalentsComponent implements OnInit {
   @Input() player?: Player;
   @Input() natureTalents?: Faehigkeiten[];
-  constructor(private playerService: PlayerService) { }
+  constructor(private playerService: PlayerService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.player = this.playerService.getPlayerPerID();
+    let id = 0;
+    if(this.route.parent?.parent){
+      id = Number(this.route.parent?.parent.snapshot.paramMap.get('id'));
+    }
+    this.player = this.playerService.getPlayer(id);
     this.natureTalents = this.playerService.getTalents(this.player, "n");
+  }
+  diceRoll(talent: Faehigkeiten) {
+    if(this.player){
+      this.playerService.diceRoll(talent,this.player)
+    }
   }
 
 }

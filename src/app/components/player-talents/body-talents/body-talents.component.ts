@@ -4,6 +4,8 @@ import {ActivatedRoute} from "@angular/router";
 import {Player} from "../../../models/player";
 import {FertigkeitenService} from "../../../services/fertigkeiten.service";
 import {Faehigkeiten} from "../../../models/fertigkeiten";
+import {ChatroomComponent} from "../../chatroom/chatroom.component";
+import {ChatService} from "../../../services/chat.service";
 
 @Component({
   selector: 'app-body-talents',
@@ -13,11 +15,19 @@ import {Faehigkeiten} from "../../../models/fertigkeiten";
 export class BodyTalentsComponent implements OnInit {
   @Input() player?: Player;
   @Input() bodyTalents?: Faehigkeiten[];
-  constructor(private playerService: PlayerService) { }
+  constructor(private playerService: PlayerService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.player = this.playerService.getPlayerPerID();
+    let id = 0;
+    if(this.route.parent?.parent){
+      id = Number(this.route.parent?.parent.snapshot.paramMap.get('id'));
+    }
+    this.player = this.playerService.getPlayer(id);
     this.bodyTalents = this.playerService.getTalents(this.player, "b");
   }
-
+  diceRoll(talent: Faehigkeiten) {
+    if(this.player){
+      this.playerService.diceRoll(talent,this.player)
+    }
+  }
 }

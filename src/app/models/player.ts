@@ -5,11 +5,14 @@ import {Spezies} from "./Spezies";
 import {PlayerTalents} from "./player-attributs/playerTalents";
 import {Kampftechniken} from "./kampftechniken";
 import {Inventory} from "./inventory";
-
+import {Language} from "./language";
+import {writing} from "./writing";
+import {advantages} from "./player-attributs/advantages";
 
 export class Player {
   constructor(public id: number,
               public APg: number,
+              public Apa: number,
               public spezies: Spezies,
               public playerstats: stats,
               public playerPersonaldata: Personaldata,
@@ -18,8 +21,15 @@ export class Player {
               public spa: number,
               public talents: PlayerTalents[],
               public inventar: Inventory,
-              public kampftechniken?: Kampftechniken[]
-
+              
+              public languages: Language[],
+              public writings: writing[],
+              public vorteil: advantages[],
+              public nachteile: advantages[],
+              public LepBouth: number, public LepLost: number,
+              public AspBouth: number, public AspLost:number,
+              public KapBouth: number,public KapLost: number,
+			  public kampftechniken?: Kampftechniken[]
   ) {
 
   }

@@ -9,11 +9,13 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class PlayerComponent implements OnInit {
   @Input() player?: Player;
-  constructor(private playerService: PlayerService) {
+  constructor(private playerService: PlayerService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-  this.player = this.playerService.getPlayerPerID();
+    let id = Number(this.route.snapshot.paramMap.get('id'));
+    this.player = this.playerService.getPlayer(id);
+    console.log(id);
   }
 
 }
