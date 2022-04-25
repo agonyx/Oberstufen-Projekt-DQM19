@@ -6,47 +6,94 @@ import {Nahkampfwaffen} from "../models/nahkampfwaffen";
 import {KampfserviceService} from "./kampfservice.service";
 import {Fernkampfwaffen} from "../models/fernkampfwaffen";
 import {Ruestung} from "../models/ruestung";
+import {Parrierwaffen} from "../models/parrierwaffen";
 
 @Injectable({
   providedIn: 'root'
 })
 export class InventoryService {
-  constructor() {
-    //Nahkampfwaffen
-    const magierstab: Nahkampfwaffen = new Nahkampfwaffen("NW-1","Magierstab","Stabwaffen", "GE/KK",
-      16,"1W6+2",-1,2);
-    const dolch: Nahkampfwaffen = new Nahkampfwaffen("NW-2","Dolch","Dolche", "GE",
-      14,"1W6+1",0,0);
-    const axtmitrunen: Nahkampfwaffen = new Nahkampfwaffen("NW-3","Axt mit Runen","Hiebwaffen", "KK",
-      14,"1W6+9",-1,-2);
-    //Fernkampfwaffen
-    const langbogen: Fernkampfwaffen = new Fernkampfwaffen("FW-1","Langbogen","Bögen", 2,"1W6+8","Pfeile","20/100/160",4,0.75)
-    //Rüstung
-    const lederharnisch: Ruestung = new Ruestung("R-1","Lederharnisch", 3,0,6);
-    const plattenruestung: Ruestung = new Ruestung("R-2","Plattenrüstung", 6,2,25);
 
-    //Inventare
+  private nahkampfwaffen: Nahkampfwaffen[] = [];
+  //Nahkampfwaffen
+  private magierstab: Nahkampfwaffen = new Nahkampfwaffen("NW-1","Magierstab","Stabwaffen", "GE/KK",
+    16,"1W6+2",-1,2);
+  private dolch: Nahkampfwaffen = new Nahkampfwaffen("NW-2","Dolch","Dolche", "GE",
+    14,"1W6+1",0,0);
+  private axtmitrunen: Nahkampfwaffen = new Nahkampfwaffen("NW-3","Axt mit Runen","Hiebwaffen", "KK",
+    14,"1W6+9",-1,-2);
+
+
+  private fernkampfwaffen: Fernkampfwaffen[] = [];
+  //Fernkampfwaffen
+  private langbogen: Fernkampfwaffen = new Fernkampfwaffen("FW-1","Langbogen","Bögen", 2,"1W6+8","Pfeile","20/100/160",4,0.75)
+
+
+  private ruestungen: Ruestung[] = [];
+  //Rüstung
+  private lederharnisch: Ruestung = new Ruestung("R-1","Lederharnisch", 3,0,6);
+  private plattenruestung: Ruestung = new Ruestung("R-2","Plattenrüstung", 6,2,25);
+
+  private parrierwaffen: Parrierwaffen[] =[];
+  constructor() {
+//Rüstung
+    this.ruestungen.push(this.lederharnisch);
+    this.ruestungen.push(this.plattenruestung);
+//Nahkampfwaffen
+    this.nahkampfwaffen.push(this.magierstab);
+    this.nahkampfwaffen.push(this.dolch);
+    this.nahkampfwaffen.push(this.axtmitrunen);
+//Fernkampfwaffen
+    this.fernkampfwaffen.push(this.langbogen);
     const inv1: Inventory = new Inventory();
-    inv1.addNW(magierstab);
-    inv1.addFW(langbogen);
-    inv1.addRuestung(plattenruestung);
+    inv1.addNW(this.magierstab);
+    inv1.addFW(this.langbogen);
+    inv1.addRuestung(this.plattenruestung);
 
   }
   getInventory(playerid: number) {
 
     return
   }
+  //TODO
   getItem(itemType: string,itemID: string) {
     if(itemType == "NW"){
-      
+        for (let i of this.nahkampfwaffen){
+          if(i.id == "itemID") {
+            return i;
+          } else {
+            throw Error("Item couldn't be found!");
+          }
+        }
+      throw Error("Item couldn't be found!");
     } else if (itemType == "FW"){
-
+      for (let i of this.fernkampfwaffen){
+        if(i.id == "itemID") {
+          return i;
+        } else {
+          throw Error("Item couldn't be found!");
+        }
+      }
+      throw Error("Item couldn't be found!");
     } else if (itemType == "R"){
-
+      for (let i of this.ruestungen){
+        if(i.id =="itemID") {
+          return i;
+        } else {
+          throw Error("Item couldn't be found!");
+        }
+      }
+      throw Error("Item couldn't be found!");
     } else if (itemType == "PW") {
-
+      for (let i of this.parrierwaffen){
+        if(i.id == "itemID") {
+          return i;
+        } else {
+          throw Error("Item couldn't be found!");
+        }
+      }
+      throw Error("Item couldn't be found!");
     } else {
-      console.error("itemType nonexistent")
+      throw Error("itemType nonexistent");
     }
   }
 

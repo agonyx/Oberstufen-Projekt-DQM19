@@ -12,6 +12,8 @@ import {KampfserviceService} from "./kampfservice.service";
 import {Kampftechniken} from "../models/kampftechniken";
 import {Inventory} from "../models/inventory";
 import {InventoryService} from "./inventory.service";
+import {Nahkampfwaffen} from "../models/nahkampfwaffen";
+import {Ruestung} from "../models/ruestung";
 
 @Injectable({
   providedIn: 'root'
@@ -39,9 +41,11 @@ export class PlayerService {
     let player1: Player = new Player(0,1000, human, player1Stats, player1PersonalData, player1BaseStats, 3, 0, player1Talents,inv)
     let kf: Kampftechniken[] = this.calcKampftechniken(player1);
     player1.kampftechniken = kf;
-    player1.inventar.addNW(this.invservice.);
-    player1.inventar.addFW(langbogen);
-    player1.inventar.addRuestung(plattenruestung);
+    //TODO
+    player1.inventar.addNW(<Nahkampfwaffen>this.invservice.getItem("NW", "NW-1"));
+    player1.inventar.addNW(<Nahkampfwaffen>this.invservice.getItem("NW", "NW-3"));
+    player1.inventar.addRuestung(<Ruestung>this.invservice.getItem("R","R-2"));
+    console.log(player1.inventar.ruestung![1])
     this.players.push(player1);
 
   } //TODO write Method getInventory
