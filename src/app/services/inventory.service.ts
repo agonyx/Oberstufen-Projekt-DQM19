@@ -54,7 +54,6 @@ export class InventoryService {
 
     return
   }
-  //TODO
   getItem(itemType: string,itemID: string) {
     if(itemType.match("NW")){
         for (let i of this.nahkampfwaffen) {
