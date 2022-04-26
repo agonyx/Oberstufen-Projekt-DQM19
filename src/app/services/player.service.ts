@@ -38,7 +38,6 @@ export class PlayerService {
 
   createData() {
 	// Generelle Spielwerte
-
     let human: Spezies = new Spezies("Human",0, 5, -5, -5, 8);
     let vorteile: advantages[] = this.creatVorteile();
     let nachteile: advantages[] = this.creatNachteile();
@@ -183,9 +182,9 @@ export class PlayerService {
         pbs.KapMax = 20 + player.playerstats.IN;
       }
     })
-    pbs.Lepmax = pbs.Lepmax + player.LepBouth;
-    pbs.AspMax = pbs.AspMax + player.AspBouth;
-    pbs.KapMax = pbs.KapMax + player.KapBouth;
+    pbs.Lepmax = pbs.Lepmax + player.LepBought;
+    pbs.AspMax = pbs.AspMax + player.AspBought;
+    pbs.KapMax = pbs.KapMax + player.KapBought;
     return pbs;
   }
   creatLanguages(): Language[]{
@@ -432,9 +431,9 @@ export class PlayerService {
     player.nachteile.forEach(nachteil => {
       Apa += nachteil.APKosten * nachteil.stufe;
     })
-    Apa += player.LepBouth * 4;
-    Apa += player.AspBouth * 4;
-    Apa += player.KapBouth * 4;
+    Apa += player.LepBought * 4;
+    Apa += player.AspBought * 4;
+    Apa += player.KapBought * 4;
     player.talents.forEach((talent,index) => {
       switch (fertigkeiten[index].Sf){
         case "A":

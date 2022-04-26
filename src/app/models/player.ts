@@ -21,14 +21,14 @@ export class Player {
               public spa: number,
               public talents: PlayerTalents[],
               public inventar: Inventory,
-              
+
               public languages: Language[],
               public writings: writing[],
               public vorteil: advantages[],
               public nachteile: advantages[],
-              public LepBouth: number, public LepLost: number,
-              public AspBouth: number, public AspLost:number,
-              public KapBouth: number,public KapLost: number,
+              public LepBought: number, public LepLost: number,
+              public AspBought: number, public AspLost:number,
+              public KapBought: number,public KapLost: number,
 			  public kampftechniken?: Kampftechniken[]
   ) {
 
