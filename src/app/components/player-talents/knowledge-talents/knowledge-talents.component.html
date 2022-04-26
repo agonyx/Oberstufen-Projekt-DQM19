@@ -9,12 +9,12 @@
   <tbody>
   <tr class="table" *ngFor="let t of knowledgeTalents">
     <td>{{t.name}}</td>
-    <td>{{t.Eg1}}</td>
-    <td>{{t.Eg2}}</td>
-    <td>{{t.Eg3}}</td>
+    <td>{{t.Eg[0]}}</td>
+    <td>{{t.Eg[1]}}</td>
+    <td>{{t.Eg[2]}}</td>
     <td>{{t.Sf}}</td>
     <td>{{t.Fw}}</td>
-    <td><button>Würfeln</button></td>
+    <td><button (click)="diceRoll(t)">Würfeln</button></td>
   </tr>
   </tbody>
 </table>

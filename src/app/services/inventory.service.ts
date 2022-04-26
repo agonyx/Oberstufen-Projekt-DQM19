@@ -3,7 +3,6 @@ import {PlayerService} from "./player.service";
 import {Player} from "../models/player";
 import {Inventory} from "../models/inventory";
 import {Nahkampfwaffen} from "../models/nahkampfwaffen";
-import {KampfserviceService} from "./kampfservice.service";
 import {Fernkampfwaffen} from "../models/fernkampfwaffen";
 import {Ruestung} from "../models/ruestung";
 import {Parrierwaffen} from "../models/parrierwaffen";

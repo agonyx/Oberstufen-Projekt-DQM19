@@ -13,6 +13,7 @@ import {PlayerSelectComponent} from "../components/player-select/player-select.c
 import {NatureTalentsComponent} from "../components/player-talents/nature-talents/nature-talents.component";
 import {KnowledgeTalentsComponent} from "../components/player-talents/knowledge-talents/knowledge-talents.component";
 import {WorkTalentsComponent} from "../components/player-talents/work-talents/work-talents.component";
+import {PlayerBattletechniquesComponent} from "../components/player-battletechniques/player-battletechniques.component";
 const routes: Routes = [
   { path: '', redirectTo: '/mainmenu', pathMatch: 'full' },
   { path: 'mainmenu', component: MainMenuComponent},
@@ -28,7 +29,8 @@ const routes: Routes = [
           {path: 'knowledge-talents', component: KnowledgeTalentsComponent },
           {path: 'work-talents', component: WorkTalentsComponent }
         ]
-      }
+      },
+      {path: 'kampftechnicken', component: PlayerBattletechniquesComponent}
     ]
   },
   { path: 'master', component: MasterComponent},

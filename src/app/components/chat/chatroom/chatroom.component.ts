@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {AppComponent} from "../../../app.component";
+import {Component, Input, OnInit} from '@angular/core';
 import {ChatMessage} from "../../../models/chat-message.model";
 import {ChatService} from "../../../services/chat.service";
-import {AppComponent} from "../../../app.component";
+import {Faehigkeiten} from "../../../models/fertigkeiten";
+import {Player} from "../../../models/player";
+import {PlayerService} from "../../../services/player.service";
+import {ActivatedRoute} from "@angular/router";
+
 
 @Component({
   selector: 'app-chatroom',
@@ -13,12 +18,14 @@ export class ChatroomComponent implements OnInit {
   wuerfelseiten = 0;
   wuerfelwunsch = false;
 
-
-  constructor(private chat: ChatService) {
-    //Test --- If message amount > 25 and everything works then fine
+  constructor(private chat: ChatService, private playerService: PlayerService, private route: ActivatedRoute) {
+ //Test --- If message amount > 25 and everything works then fine
     AppComponent.initialload = true;
-  }
+	}
+  @Input() player?: Player;
   ngOnInit(): void {
+    let id = Number(this.route.snapshot.paramMap.get('id'));
+    this.player = this.playerService.getPlayer(id);
   }
 switchWuerfelwunschState(){
     if(this.wuerfelwunsch) {
@@ -31,7 +38,7 @@ switchWuerfelwunschState(){
   randomBetween(min: number, max: number):number {
   return Math.round(Math.random() * (max - min)+ min);
 }
-  roll(anzahlwuerfe: number, wuerfelseiten:number){
+  roll(anzahlwuerfe: number, wuerfelseiten:number, player?: Player){
     let string =""
     if(anzahlwuerfe != 0 && wuerfelseiten != 0) {
 
@@ -39,11 +46,16 @@ switchWuerfelwunschState(){
     for (let i = 0; i < anzahlwuerfe; i++){
       string += this.randomBetween(1,wuerfelseiten)+" "
     }
-
-      let message = new ChatMessage("Würfelbot", "Ich habe "+ this.anzahlwuerfe +"w"+this.wuerfelseiten + " für dich geworfen! \n Ergebnisse: " + string );
-      this.chat.sendChatMessage(message);
+      if(player){
+        let message = new ChatMessage(player?.playerPersonaldata.Name+" "+player?.playerPersonaldata.Lastname, "Ich habe "+ this.anzahlwuerfe +"w"+this.wuerfelseiten + " für dich geworfen! \n Ergebnisse: " + string );
+        this.chat.sendChatMessage(message);
+      } else {
+        let message = new ChatMessage("Würfelbot", "Ich habe "+ this.anzahlwuerfe +"w"+this.wuerfelseiten + " für dich geworfen! \n Ergebnisse: " + string );
+        this.chat.sendChatMessage(message);
+      }
   } else {
       alert("Werte können nicht 0 sein!")
     }
   }
+
 }
