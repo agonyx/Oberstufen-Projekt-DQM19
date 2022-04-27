@@ -1,6 +1,20 @@
 <div class="container" *ngIf="player">
   <div class="row">
     <div class="col-3">
+      <label for="playerApGesamt">Ap Gesamt:</label>
+      <output type="text" id="playerApGesamt" name="playerApGesamt">{{player.APg}}</output>
+    </div>
+    <div class="col-3">
+      <label for="playerApVerbleibend">Ap Verbleibend:</label>
+      <output type="text" id="playerApVerbleibend" name="playerApVerbleibend">{{player.APg - player.Apa}}</output>
+    </div>
+    <div class="col-3">
+      <label for="playerApAusgegeben">Ap Ausgegeben:</label>
+      <output type="text" id="playerApAusgegeben" name="playerApAusgegeben">{{player.Apa}}</output>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
       <label for="playerName">Name:</label>
       <output type="text" id="playerName" name="playerName">{{player.playerPersonaldata.Name}}</output>
     </div>
