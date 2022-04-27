@@ -1,0 +1,13 @@
+<div *ngIf="player">
+  <div *ngIf="disadvantage">
+    <div>{{disadvantage.name}}:</div>
+    <br>
+    <label for="disadvantagesRequirements">Voraussetzungen:</label>
+    <output *ngIf="disadvantage.requirements.length===0">Keine</output>
+    <output id="disadvantagesRequirements">{{disadvantage.requirements}}</output>
+    <br>
+    <br>
+    <label for="disadvantagesRuels">Regeln:</label>
+    <output id="disadvantagesRuels">{{disadvantage.rules}}</output>
+  </div>
+</div>

@@ -28,9 +28,12 @@ import { KnowledgeTalentsComponent } from './components/player-talents/knowledge
 import { WorkTalentsComponent } from './components/player-talents/work-talents/work-talents.component';
 import { PlayerEquipmentComponent } from './components/player-equipment/player-equipment.component';
 import { PlayerBattletechniquesComponent } from './components/player-battletechniques/player-battletechniques.component';
+import { AbilitysComponent } from './components/abilitys/abilitys.component';
+import { AdvantagesDescribtionComponent } from './components/advantages-describtion/advantages-describtion.component';
+import { DisadvantagesDescribtionComponent } from './components/disadvantages-describtion/disadvantages-describtion.component';
 @NgModule({
   imports: [BrowserModule, FormsModule, AppRoutingModule, NgbModule, AngularFireModule.initializeApp(environment.firebase), AngularFireDatabaseModule, CheckboxModule],
-  declarations: [ AppComponent, MainMenuComponent, ChatroomComponent, MessageComponent, ChatFormComponent, FeedComponent, PlayerTalentsComponent, MasterComponent, PlayerComponent, BodyTalentsComponent, BaseInfoComponent, SocietyTalentsComponent, PlayerSelectComponent, NatureTalentsComponent, KnowledgeTalentsComponent, WorkTalentsComponent, PlayerEquipmentComponent, PlayerBattletechniquesComponent ],
+  declarations: [ AppComponent, MainMenuComponent, ChatroomComponent, MessageComponent, ChatFormComponent, FeedComponent, PlayerTalentsComponent, MasterComponent, PlayerComponent, BodyTalentsComponent, BaseInfoComponent, SocietyTalentsComponent, PlayerSelectComponent, NatureTalentsComponent, KnowledgeTalentsComponent, WorkTalentsComponent, PlayerEquipmentComponent, PlayerBattletechniquesComponent, AbilitysComponent, AdvantagesDescribtionComponent, DisadvantagesDescribtionComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ChatService, PlayerService, FertigkeitenService]
 

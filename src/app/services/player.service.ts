@@ -47,7 +47,7 @@ export class PlayerService {
     let player1Stats: stats = new stats(12, 14, 14, 13, 12, 12, 12, 11);
     let player1PersonalData: Personaldata = new Personaldata("Jendar", "Korninger");
     let player1VorteileString: string[][] = [["Zauberer"],["I"]];
-    let player1NachteileString: string[][] = [[],[]];
+    let player1NachteileString: string[][] = [["Angst","Blutrausch"],["III","I"]];
     let player1LanguagesString: string[][] = [["Garethi","Bosperano","Thorwahlsch"],["MS","III","II"]];
     let player1WritingString: string[] = ["Kusliker Zeichen"];
     let FWs1: number[] = [0,0,4,3,0,7,4,4,0,4,7,0,0,0,7,2,4,7,0,5,5,0,4,0,0,0,3,7,4,0,0,3,4,4,3,8,0,12,3,5,3,0,12,0,0,10,4,0,0,4,1,0,0,11,1,0,0,0,1];
@@ -250,7 +250,11 @@ export class PlayerService {
   }
   creatNachteile(): advantages[]{
     let nachteile: advantages[] = [];
-
+    let Angst: advantages = new advantages("Nachteil", -5, "Angst", "Bla blub", ["Liebe"],1)
+    nachteile.push(Angst);
+    //Blutrausch
+    let Blutrausch: advantages = new advantages("Nachteil", -10, "Blutrausch", "Bla blub", ["Wut"],1)
+    nachteile.push(Blutrausch);
     return nachteile;
   }
   creatPlayerNachteil(nachteile: advantages[],playerNachteileString: string[][]): advantages[]{

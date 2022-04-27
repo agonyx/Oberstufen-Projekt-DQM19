@@ -1,0 +1,27 @@
+<div *ngIf="player">
+  <table>
+    <thead>
+    <tr>
+      <th>Vorteile</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="table" *ngFor="let v of player.vorteil">
+      <td><button (click)="gotoAdvantages(v.name)">{{v.name}}</button></td>
+    </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+    <tr>
+      <th>Nachteile</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="table" *ngFor="let n of player.nachteile">
+      <td><button (click)="gotoDisadvantages(n.name)">{{n.name}}</button></td>
+    </tr>
+    </tbody>
+  </table>
+  <router-outlet></router-outlet>
+</div>

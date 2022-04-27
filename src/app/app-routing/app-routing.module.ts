@@ -14,6 +14,11 @@ import {NatureTalentsComponent} from "../components/player-talents/nature-talent
 import {KnowledgeTalentsComponent} from "../components/player-talents/knowledge-talents/knowledge-talents.component";
 import {WorkTalentsComponent} from "../components/player-talents/work-talents/work-talents.component";
 import {PlayerBattletechniquesComponent} from "../components/player-battletechniques/player-battletechniques.component";
+import {AbilitysComponent} from "../components/abilitys/abilitys.component";
+import {AdvantagesDescribtionComponent} from "../components/advantages-describtion/advantages-describtion.component";
+import {
+  DisadvantagesDescribtionComponent
+} from "../components/disadvantages-describtion/disadvantages-describtion.component";
 const routes: Routes = [
   { path: '', redirectTo: '/mainmenu', pathMatch: 'full' },
   { path: 'mainmenu', component: MainMenuComponent},
@@ -30,7 +35,13 @@ const routes: Routes = [
           {path: 'work-talents', component: WorkTalentsComponent }
         ]
       },
-      {path: 'kampftechnicken', component: PlayerBattletechniquesComponent}
+      {path: 'kampftechnicken', component: PlayerBattletechniquesComponent},
+      {path: 'abilitys', component: AbilitysComponent,
+        children: [
+          {path: 'advanteges/:name', component: AdvantagesDescribtionComponent},
+          {path: 'disadvanteges/:name', component: DisadvantagesDescribtionComponent}
+        ]
+      }
     ]
   },
   { path: 'master', component: MasterComponent},

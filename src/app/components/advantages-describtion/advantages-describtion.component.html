@@ -1,0 +1,13 @@
+<div *ngIf="player">
+  <div *ngIf="advantage">
+    <div>{{advantage.name}}:</div>
+    <br>
+    <label for="advantagesRequirements">Voraussetzungen:</label>
+    <output *ngIf="advantage.requirements.length===0">Keine</output>
+    <output id="advantagesRequirements">{{advantage.requirements}}</output>
+    <br>
+    <br>
+    <label for="advantagesRuels">Regeln:</label>
+    <output id="advantagesRuels">{{advantage.rules}}</output>
+  </div>
+</div>
