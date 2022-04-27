@@ -18,7 +18,6 @@ export class PlayerTalentsComponent implements OnInit {
     if(this.route.parent){
       id = Number(this.route.parent.snapshot.paramMap.get('id'));
     }
-    console.log(id)
     this.player = this.playerService.getPlayer(id);
   }
 

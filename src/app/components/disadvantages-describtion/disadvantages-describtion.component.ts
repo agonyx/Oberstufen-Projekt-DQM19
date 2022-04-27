@@ -15,7 +15,10 @@ export class DisadvantagesDescribtionComponent implements OnInit {
   constructor(private playerService: PlayerService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    let playerID = Number(this.route.snapshot.paramMap.get('id'));
+    let playerID = 0;
+    if(this.route.parent){
+      playerID = Number(this.route.parent.snapshot.paramMap.get('id'));
+    }
     this.player = this.playerService.getPlayer(playerID);
     //Updated die Nachteile, wenn es eine Url Änderung gab
     this.route.params.subscribe((params: any) => {

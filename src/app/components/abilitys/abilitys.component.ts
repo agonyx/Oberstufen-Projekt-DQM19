@@ -13,7 +13,10 @@ export class AbilitysComponent implements OnInit {
   constructor(private playerService: PlayerService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    let id = Number(this.route.snapshot.paramMap.get('id'));
+    let id = 0;
+    if(this.route.parent){
+      id = Number(this.route.parent.snapshot.paramMap.get('id'));
+    }
     this.player = this.playerService.getPlayer(id);
   }
   async gotoAdvantages(advantegename: string): Promise<void> {
