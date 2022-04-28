@@ -9,7 +9,7 @@
 
 .chatInput:focus{
   background-color: #E4F1FE;
-  color: #222;
+  color: #222222;
   transition: 0.2s ease-in;
 }
 .chatButton:hover{

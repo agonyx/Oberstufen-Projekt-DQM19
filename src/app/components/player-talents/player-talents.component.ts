@@ -3,6 +3,7 @@ import {Player} from "../../models/player";
 import {PlayerService} from "../../services/player.service";
 import {ActivatedRoute} from "@angular/router";
 import {Faehigkeiten} from "../../models/fertigkeiten";
+//TODO unterpunkt adden
 
 
 @Component({

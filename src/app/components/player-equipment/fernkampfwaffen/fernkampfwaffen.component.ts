@@ -3,7 +3,6 @@ import {Player} from "../../../models/player";
 import {PlayerService} from "../../../services/player.service";
 import {ActivatedRoute} from "@angular/router";
 import {Fernkampfwaffen} from "../../../models/fernkampfwaffen";
-import {KampfserviceService} from "../../../services/kampfservice.service";
 
 @Component({
   selector: 'app-fernkampfwaffen',
@@ -13,7 +12,7 @@ import {KampfserviceService} from "../../../services/kampfservice.service";
 export class FernkampfwaffenComponent implements OnInit {
   @Input() player?: Player;
   @Input() fw?: Fernkampfwaffen[] ;
-  constructor(private playerService: PlayerService, public  route: ActivatedRoute, public kampfservice: KampfserviceService) { }
+  constructor(private playerService: PlayerService, public  route: ActivatedRoute) { }
 
   ngOnInit(): void {
     let id = 0;
@@ -28,6 +27,5 @@ export class FernkampfwaffenComponent implements OnInit {
     }
 
   }
-
 
 }
