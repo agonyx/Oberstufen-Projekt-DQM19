@@ -41,8 +41,6 @@ switchWuerfelwunschState(){
   roll(anzahlwuerfe: number, wuerfelseiten:number, player?: Player){
     let string =""
     if(anzahlwuerfe != 0 && wuerfelseiten != 0) {
-
-
     for (let i = 0; i < anzahlwuerfe; i++){
       string += this.randomBetween(1,wuerfelseiten)+" "
     }

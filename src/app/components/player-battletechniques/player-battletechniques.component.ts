@@ -10,7 +10,6 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./player-battletechniques.component.css']
 })
 export class PlayerBattletechniquesComponent implements OnInit {
-  //TODO HTML ZUM FUNKTIONIEREN BRINGEN
 
   @Input() player?: Player;
   @Input() kampftechniken?: Kampftechniken[];
