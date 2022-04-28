@@ -47,7 +47,7 @@ export class PlayerService {
     let player1Stats: stats = new stats(12, 14, 14, 13, 12, 12, 12, 11);
     let player1PersonalData: Personaldata = new Personaldata("Jendar", "Korninger");
     let player1VorteileString: string[][] = [["Zauberer"],["I"]];
-    let player1NachteileString: string[][] = [["Angst","Blutrausch"],["III","I"]];
+    let player1NachteileString: string[][] = [["Angst"],["III"]];
     let player1LanguagesString: string[][] = [["Garethi","Bosperano","Thorwahlsch"],["MS","III","II"]];
     let player1WritingString: string[] = ["Kusliker Zeichen"];
     let FWs1: number[] = [0,0,4,3,0,7,4,4,0,4,7,0,0,0,7,2,4,7,0,5,5,0,4,0,0,0,3,7,4,0,0,3,4,4,3,8,0,12,3,5,3,0,12,0,0,10,4,0,0,4,1,0,0,11,1,0,0,0,1];
@@ -72,8 +72,8 @@ export class PlayerService {
     //Player 2 (Schmit Ranok) create
     let player2Stats: stats = new stats(13, 12, 11, 12, 14, 10, 14, 14);
     let player2PersonalData: Personaldata = new Personaldata("Schmit", "Ranok", "Burgfalkenfels", "23. Boron. 1026",18,"männlich",190,86,"Schwarz","Grün","Frei","");
-    let player2VorteileString: string[][] = [[],[]];
-    let player2NachteileString: string[][] = [[],[]];
+    let player2VorteileString: string[][] = [["Hohe-Lebenskraft","Wohlklang"],["V","I"]];
+    let player2NachteileString: string[][] = [["Jähzorn","Blutrausch"],["I","I"]];
     let player2LanguagesString: string[][] = [["Garethi","Tulamidya","Thorwahlsch"],["MS","II","I"]];
     let player2WritingString: string[] = ["Kusliker Zeichen"];
     let FWs2: number[] = [0,0,5,7,10,5,0,5,6,4,5,0,3,10,7,7,10,0,0,3,4,0,5,0,0,0,0,1,3,2,2,2,3,4,0,1,0,7,4,6,7,0,4,0,7,10,0,0,0,2,4,0,4,0,12,0,0,4,2];
@@ -98,8 +98,8 @@ export class PlayerService {
     //Player 3 (Vero Lurana) create
     let player3Stats: stats = new stats(12, 11, 14, 10, 14, 13, 12, 14);
     let player3PersonalData: Personaldata = new Personaldata("Vero", "Lurana", "Burgfalkenfels", "9. Phex. 1024",20,"männlich",178,70,"Schwarz","Braun","Frei","");
-    let player3VorteileString: string[][] = [[],[]];
-    let player3NachteileString: string[][] = [[],[]];
+    let player3VorteileString: string[][] = [["Entfernungssinn","Flink"],["I","I"]];
+    let player3NachteileString: string[][] = [["Niedrige-Lebenskraft", "Verfrühter-Höhepunkt"],["I","I"]];
     let player3LanguagesString: string[][] = [["Garethi","Thorwahlsch","Tulamidya"],["MS","II","I"]];
     let player3WritingString: string[] = [];
     let FWs3: number[] = [0,0,11,9,6,6,4,3,0,10,0,0,11,4,0,5,4,0,3,0,0,5,2,12,7,0,10,6,10,7,3,1,0,3,0,1,0,2,0,4,0,0,4,0,0,3,0,0,0,2,4,1,8,0,1,0,0,0,4];
@@ -181,6 +181,17 @@ export class PlayerService {
       } else if(element.name === "Geweihter") {
         pbs.KapMax = 20 + player.playerstats.IN;
       }
+      if(element.name === "Hohe-Lebenskraft"){
+        pbs.Lepmax = pbs.Lepmax + element.stufe;
+      }
+      if(element.name === "flink"){
+        pbs.Ges = pbs.Ges + element.stufe;
+      }
+    })
+    player.nachteile.forEach(element => {
+      if(element.name === "Niedrige-Lebenskraft"){
+        pbs.Lepmax = pbs.Lepmax - element.stufe;
+      }
     })
     pbs.Lepmax = pbs.Lepmax + player.LepBought;
     pbs.AspMax = pbs.AspMax + player.AspBought;
@@ -205,10 +216,19 @@ export class PlayerService {
     writings.push(KuslikerZeichen);
     return writings;
   }
+  // erstellt Vorteile
   creatVorteile(): advantages[]{
     let vorteile: advantages[] = [];
     let zauberer: advantages = new advantages("Vorteil", 25, "Zauberer", "Der Zauberer erhält als Astralenergie- Grundwert 20 AsP. Der Vorteil beinhaltet nicht die Sonderfertigkeit Tradition (siehe Regelwerk Seite 275). Diese muss einzeln erworben werden. Jeder Zauberer muss mit einer Tradition starten (eine Tradition ist eine spezielle Sonderfertigkeit). Dieser Vorteil lässt sich im späteren Spielverlauf nicht mehr erwerben.", [],1)
     vorteile.push(zauberer);
+    let hoheLebenskraft: advantages = new advantages("Vorteil", 6, "Hohe-Lebenskraft", "Der LE-Grundwert steigt durch diesen Vorteil um 1 Punkt pro Stufe des Vorteils.", ["Kein Nachteil Niedrige Lebenskraft "],1)
+    vorteile.push(hoheLebenskraft);
+    let wohlklang: advantages = new advantages("Vorteil", 5, "Wohlklang", "Fertigkeitsproben auf Singen sind um 1 erleichtert.", ["Kein Nachteil Stumm"],1)
+    vorteile.push(wohlklang);
+    let entfernungssinn: advantages = new advantages("Vorteil", 10, "Entfernungssinn", "Proben auf Fernkampf mit Schusswaffen (und nur mit Schusswaffen) sind bei der Entfernungskategorie Weit nur um 1 anstatt um 2 erschwert.", ["Kein Nachteil Blind","Eingeschränkter Sinn (Sicht)","Farbenblind","Verstümmelt (Einäugig) "],1)
+    vorteile.push(entfernungssinn);
+    let flink: advantages = new advantages("Vorteil", 8, "Flink", "Durch Flink bekommt ein Held 1 Punkt auf seinen Geschwindigkeit-Grundwert hinzu.", ["Kein Nachteil Behäbig","Fettleibig","Verstümmelt (Einbeinig)"],1)
+    vorteile.push(flink);
     return vorteile;
   }
   creatPlayerVorteile(vorteile: advantages[],playerVorteileString: string[][]): advantages[]{
@@ -250,11 +270,17 @@ export class PlayerService {
   }
   creatNachteile(): advantages[]{
     let nachteile: advantages[] = [];
-    let Angst: advantages = new advantages("Nachteil", -5, "Angst", "Bla blub", ["Liebe"],1)
+    let Angst: advantages = new advantages("Nachteil", -5, "Angst", "Bla blub", ["Fear"],1)
     nachteile.push(Angst);
-    //Blutrausch
-    let Blutrausch: advantages = new advantages("Nachteil", -10, "Blutrausch", "Bla blub", ["Wut"],1)
+    //Schlechte Eigenschaft Jähzorn
+    let Jaehzorn: advantages = new advantages("Nachteil", -10, "Jähzorn", "Der Held ist sehr reizbar und neigt zu Wutausbrüchen, die meist nur kurz anhalten, aber zu gewalttätigem Verhalten führen können.", [],1)
+    nachteile.push(Jaehzorn);
+    let Blutrausch: advantages = new advantages("Nachteil", -10, "Blutrausch", "Der Held erhält unter speziellen Umständen den Status Blutrausch. Der Blutrausch wird aktiviert, wenn der Held durch einen Angriff eine Stufe des Zustands Schmerz erleidet oder ihm seine Probe auf Willenskraft zur Aktivierung der Schlechten Eigenschaft Jähzorn misslingt.", ["Schlechte Eigenschaft Jähzorn","Kein Nachteil Angst vor Blut"],1)
     nachteile.push(Blutrausch);
+    let niedrigeLebenskraft: advantages = new advantages("Nachteil", -4, "Niedrige-Lebenskraft", "Der LE-Grundwert sinkt durch diesen Nachteil um 1 Punkt pro Stufe des Nachteils.", ["Kein Vorteil Hohe Lebenskraft"],1)
+    nachteile.push(niedrigeLebenskraft);
+    let verfruehterHoehepunkt: advantages = new advantages("Nachteil", -8, "Verfrühter-Höhepunkt", "Der Held bekommt seinen Höhepunkt bereits bei Erregung Stufe III. Erregung Stufe III wird bei ihm wie Erregung Stufe IV behandelt.", ["Kein Vorteil Ausdauernde/r Liebhaber/in"],1)
+    nachteile.push(verfruehterHoehepunkt);
     return nachteile;
   }
   creatPlayerNachteil(nachteile: advantages[],playerNachteileString: string[][]): advantages[]{

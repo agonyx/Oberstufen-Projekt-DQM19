@@ -16,8 +16,8 @@ export class DisadvantagesDescribtionComponent implements OnInit {
 
   ngOnInit(): void {
     let playerID = 0;
-    if(this.route.parent){
-      playerID = Number(this.route.parent.snapshot.paramMap.get('id'));
+    if(this.route.parent?.parent){
+      playerID = Number(this.route.parent.parent.snapshot.paramMap.get('id'));
     }
     this.player = this.playerService.getPlayer(playerID);
     //Updated die Nachteile, wenn es eine Url Änderung gab

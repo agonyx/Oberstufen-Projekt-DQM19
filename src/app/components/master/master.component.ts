@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./master.component.css']
 })
 export class MasterComponent implements OnInit {
-
+  //Noch nicht implementiert
   constructor() { }
 
   ngOnInit() {
