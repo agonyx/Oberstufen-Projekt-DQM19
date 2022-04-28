@@ -8,7 +8,7 @@ import {Player} from "../models/player";
   providedIn: 'root'
 })
 export class ChatService {
-  userName: string = "swag";
+  userName: string = "Default";
   chatMessage: ChatMessage = new ChatMessage();
   chatMessages: AngularFireList<ChatMessage[]>;
   constructor(
@@ -17,6 +17,9 @@ export class ChatService {
   }
 getDB(): AngularFireDatabase{
     return this.db;
+}
+setUsername(username: string) {
+    this.userName = username;
 }
   sendMessage(msg: string){
     this.chatMessages = this.getMessages();

@@ -37,14 +37,14 @@ const routes: Routes = [
         ]
       },
 
-      path: 'Kampf', component: PlayerEquipmentComponent},
+      {path: 'Kampf', component: PlayerEquipmentComponent},
       {path: 'abilitys', component: AbilitysComponent,
         children: [
           {path: 'advanteges/:name', component: AdvantagesDescribtionComponent},
           {path: 'disadvanteges/:name', component: DisadvantagesDescribtionComponent}
         ]
       }
-      {
+
 
     ]
   },

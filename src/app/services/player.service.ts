@@ -26,7 +26,7 @@ import {Fernkampfwaffen} from "../models/fernkampfwaffen";
 })
 export class PlayerService {
   players: Player[] = [];
-  constructor(private fertigkeitenService: FertigkeitenService, private route: ActivatedRoute, private chatService: ChatService, private ks: KampfserviceService, private invservice: InventoryService) {
+  constructor(private fertigkeitenService: FertigkeitenService, private route: ActivatedRoute, public chatService: ChatService, private ks: KampfserviceService, private invservice: InventoryService) {
     this.createData();
   }
   // Gibt alle Spieler als Observabels wieder
@@ -175,8 +175,6 @@ export class PlayerService {
     return kst;
   }
 
-
-
   getKampftechnik(p: Player, kampftechnik: string){
       for(let i of p.kampftechniken!){
         if(i.kampftechniken.match(kampftechnik)){
@@ -185,6 +183,7 @@ export class PlayerService {
       }
       throw Error;
   }
+
 // Errechnet die Basiswerte eines Spielers (Lep, Asp, ...)
   calcPlayerBaseStats(player: Player) {
     let pbs: Base = new Base(

@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Kampftechniken} from "../../../models/kampftechniken";
-import {PlayerService} from "../../../services/player.service";
-import {Player} from "../../../models/player";
+import {Kampftechniken} from "../../models/kampftechniken";
+import {PlayerService} from "../../services/player.service";
+import {Player} from "../../models/player";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({

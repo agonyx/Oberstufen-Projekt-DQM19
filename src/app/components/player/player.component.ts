@@ -16,6 +16,7 @@ export class PlayerComponent implements OnInit {
     //Ruft Spieler per Url id ab
     let id = Number(this.route.snapshot.paramMap.get('id'));
     this.player = this.playerService.getPlayer(id);
+    this.playerService.chatService.setUsername(this.player.playerPersonaldata.Name + " " +  this.player.playerPersonaldata.Lastname)
   }
 
 }

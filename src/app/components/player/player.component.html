@@ -1,5 +1,6 @@
-<div *ngIf="player">
-  <h2>{{player.playerPersonaldata.Name}} {{player.playerPersonaldata.Lastname}}</h2>
+
+<div class = "wrapper"*ngIf="player">
+  <h2 >{{player.playerPersonaldata.Name}} {{player.playerPersonaldata.Lastname}}</h2>
   <div>
     MU: {{player.playerstats.MU}}
     KL: {{player.playerstats.KL}}
@@ -9,6 +10,9 @@
     GE: {{player.playerstats.GE}}
     KO: {{player.playerstats.KO}}
     KK: {{player.playerstats.KK}}
+  </div>
+  <div class = "second">
+    <app-chatroom></app-chatroom>
   </div>
   <div>
     <nav>
@@ -23,13 +27,6 @@
 
 
     <router-outlet></router-outlet>
-    <div class="row">
-      <div class="col-9">
 
-      </div>
-      <div class="col-3">
-        <app-chatroom></app-chatroom>
-      </div>
-    </div>
   </div>
 </div>
