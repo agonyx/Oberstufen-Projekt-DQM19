@@ -20,9 +20,9 @@
     <td>{{t.TP}}</td>
     <td>{{t.AT_PAMOD1}}</td>
     <td>{{t.AT_PAMOD2}}</td>
-    <td>{{this.playerService.getKampftechnik(this.player!,t.kampftechnik).getAT()! + t.AT_PAMOD1!}}</td>
-    <td>{{this.playerService.getKampftechnik(this.player!,t.kampftechnik).getPA()! + t.AT_PAMOD2!}}</td>
-    <td><button class="btn-primary">Würfeln</button></td>
+    <td>{{t.AT}}</td>
+    <td>{{t.PA}}</td>
+    <td><button (click)="this.kampfservice.rollNW(t)" class="btn-primary">Würfeln</button></td>
   </tr>
   </tbody>
 </table>

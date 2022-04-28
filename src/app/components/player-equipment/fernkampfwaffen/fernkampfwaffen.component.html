@@ -22,7 +22,7 @@
     <td>{{t.BF}}</td>
     <td>{{t.fernkampf}}</td>
     <td>{{t.gewicht}}</td>
-    <td><button class="btn-primary">Würfeln</button></td>
+    <td><button (click)="this.kampfservice.rollFW(t)" class="btn-primary">Würfeln</button></td>
   </tr>
   </tbody>
 </table>
