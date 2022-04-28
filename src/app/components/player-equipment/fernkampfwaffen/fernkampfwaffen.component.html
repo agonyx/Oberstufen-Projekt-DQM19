@@ -1,0 +1,28 @@
+<h2>Fernkampfwaffen</h2>
+<table>
+  <thead>
+  <th>Waffe</th>
+  <th>Kampftechnik</th>
+  <th>Ladezeiten</th>
+  <th>TP</th>
+  <th>Munition</th>
+  <th>Reichweite</th>
+  <th>BF</th>
+  <th>Fernkampf</th>
+  <th>Gewicht</th>
+  </thead>
+  <tbody>
+  <tr class="table" *ngFor="let t of fw">
+    <td>{{t.waffe}}</td>
+    <td>{{t.kampftechnik}}</td>
+    <td>{{t.ladezeiten}}</td>
+    <td>{{t.tp}}</td>
+    <td>{{t.munition}}</td>
+    <td>{{t.reichweite}}</td>
+    <td>{{t.BF}}</td>
+    <td>{{t.fernkampf}}</td>
+    <td>{{t.gewicht}}</td>
+    <td><button class="btn-primary">Würfeln</button></td>
+  </tr>
+  </tbody>
+</table>

@@ -14,7 +14,7 @@ export class InventoryService {
 
   private nahkampfwaffen: Nahkampfwaffen[] = [];
   //Nahkampfwaffen
-  private magierstab: Nahkampfwaffen = new Nahkampfwaffen("NW-1","Magierstab","Stabwaffen", "GE/KK",
+  private magierstab: Nahkampfwaffen = new Nahkampfwaffen("NW-1","Magierstab","Stangenwaffen", "GE/KK",
     16,"1W6+2",-1,2);
   private dolch: Nahkampfwaffen = new Nahkampfwaffen("NW-2","Dolch","Dolche", "GE",
     14,"1W6+1",0,0);

@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Kampftechniken} from "../../models/kampftechniken";
-import {PlayerService} from "../../services/player.service";
-import {Player} from "../../models/player";
+import {Kampftechniken} from "../../../models/kampftechniken";
+import {PlayerService} from "../../../services/player.service";
+import {Player} from "../../../models/player";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -10,9 +10,13 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./player-battletechniques.component.css']
 })
 export class PlayerBattletechniquesComponent implements OnInit {
+  //TODO HTML ZUM FUNKTIONIEREN BRINGEN
+
   @Input() player?: Player;
   @Input() kampftechniken?: Kampftechniken[];
-  constructor(public playerService: PlayerService, public  route: ActivatedRoute) { }
+  constructor(private playerService: PlayerService, public  route: ActivatedRoute) {
+
+	  }
 
   ngOnInit(): void {
     //Ruft Spieler per Url id ab
@@ -21,8 +25,10 @@ export class PlayerBattletechniquesComponent implements OnInit {
       id = Number(this.route.parent?.parent.snapshot.paramMap.get('id'));
     }
     this.player = this.playerService.getPlayer(id);
-
+    if(this.player.kampftechniken != undefined) {
+      console.log("HEUREKA")
+      this.kampftechniken = this.player.kampftechniken;
+    }
   }
 
 }
-

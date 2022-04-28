@@ -27,13 +27,17 @@ import { NatureTalentsComponent } from './components/player-talents/nature-talen
 import { KnowledgeTalentsComponent } from './components/player-talents/knowledge-talents/knowledge-talents.component';
 import { WorkTalentsComponent } from './components/player-talents/work-talents/work-talents.component';
 import { PlayerEquipmentComponent } from './components/player-equipment/player-equipment.component';
+
 import { PlayerBattletechniquesComponent } from './components/player-battletechniques/player-battletechniques.component';
 import { AbilitysComponent } from './components/abilitys/abilitys.component';
 import { AdvantagesDescribtionComponent } from './components/advantages-describtion/advantages-describtion.component';
 import { DisadvantagesDescribtionComponent } from './components/disadvantages-describtion/disadvantages-describtion.component';
+import { NahkampfwaffenComponent } from './components/player-equipment/nahkampfwaffen/nahkampfwaffen.component';
+import { FernkampfwaffenComponent } from './components/player-equipment/fernkampfwaffen/fernkampfwaffen.component';
+import { RuestungComponent } from './components/player-equipment/ruestung/ruestung.component';
 @NgModule({
   imports: [BrowserModule, FormsModule, AppRoutingModule, NgbModule, AngularFireModule.initializeApp(environment.firebase), AngularFireDatabaseModule, CheckboxModule],
-  declarations: [ AppComponent, MainMenuComponent, ChatroomComponent, MessageComponent, ChatFormComponent, FeedComponent, PlayerTalentsComponent, MasterComponent, PlayerComponent, BodyTalentsComponent, BaseInfoComponent, SocietyTalentsComponent, PlayerSelectComponent, NatureTalentsComponent, KnowledgeTalentsComponent, WorkTalentsComponent, PlayerEquipmentComponent, PlayerBattletechniquesComponent, AbilitysComponent, AdvantagesDescribtionComponent, DisadvantagesDescribtionComponent ],
+  declarations: [ AppComponent, MainMenuComponent, ChatroomComponent, MessageComponent, ChatFormComponent, FeedComponent, PlayerTalentsComponent, MasterComponent, PlayerComponent, BodyTalentsComponent, BaseInfoComponent, SocietyTalentsComponent, PlayerSelectComponent, NatureTalentsComponent, KnowledgeTalentsComponent, WorkTalentsComponent, PlayerEquipmentComponent, PlayerBattletechniquesComponent, AbilitysComponent, AdvantagesDescribtionComponent, DisadvantagesDescribtionComponent, NahkampfwaffenComponent, FernkampfwaffenComponent, RuestungComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ChatService, PlayerService, FertigkeitenService]
 

@@ -19,6 +19,7 @@ import {writing} from "../models/writing";
 import {advantages} from "../models/player-attributs/advantages";
 import {ChatService} from "./chat.service";
 import {Observable, of} from "rxjs";
+import {Fernkampfwaffen} from "../models/fernkampfwaffen";
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,7 @@ export class PlayerService {
   // Generiert Spieldaten
   createData() {
 	// Generelle Spielwerte
+
     let human: Spezies = new Spezies("Human",0, 5, -5, -5, 8);
     let vorteile: advantages[] = this.creatVorteile();
     let nachteile: advantages[] = this.creatNachteile();
@@ -67,6 +69,7 @@ export class PlayerService {
     player1.kampftechniken = kf1;
     player1.inventar.addNW(<Nahkampfwaffen>this.invservice.getItem("NW", "NW-1"));
     player1.inventar.addNW(<Nahkampfwaffen>this.invservice.getItem("NW", "NW-3"));
+    player1.inventar.addFW(<Fernkampfwaffen>this.invservice.getItem("FW","FW-1"));
     player1.inventar.addRuestung(<Ruestung>this.invservice.getItem("R","R-2"));
 	let Apa1: number = this.ApRechner(player1, this.fertigkeitenService.fertigkeiten);
     player1.Apa = Apa1;
@@ -93,6 +96,7 @@ export class PlayerService {
     player2.kampftechniken = kf2;
     player2.inventar.addNW(<Nahkampfwaffen>this.invservice.getItem("NW", "NW-1"));
     player2.inventar.addNW(<Nahkampfwaffen>this.invservice.getItem("NW", "NW-3"));
+    player2.inventar.addFW(<Fernkampfwaffen>this.invservice.getItem("FW","FW-1"));
     player2.inventar.addRuestung(<Ruestung>this.invservice.getItem("R","R-2"));
     let Apa2: number = this.ApRechner(player2, this.fertigkeitenService.fertigkeiten);
     player2.Apa = Apa2;
@@ -119,12 +123,14 @@ export class PlayerService {
     player3.kampftechniken = kf3;
     player3.inventar.addNW(<Nahkampfwaffen>this.invservice.getItem("NW", "NW-1"));
     player3.inventar.addNW(<Nahkampfwaffen>this.invservice.getItem("NW", "NW-3"));
+    player3.inventar.addFW(<Fernkampfwaffen>this.invservice.getItem("FW","FW-1"));
     player3.inventar.addRuestung(<Ruestung>this.invservice.getItem("R","R-2"));
     let Apa3: number = this.ApRechner(player3, this.fertigkeitenService.fertigkeiten);
     player3.Apa = Apa3;
     this.players.push(player3);
 
   }
+
   getPlayerInventory(playerid: number){
     for(let i of this.players) {
       if(i.id == playerid) {
@@ -152,7 +158,8 @@ export class PlayerService {
       .set("KK", p.playerstats.KK)
       .set("GE/KK", biggah);
 
-    let kst: Kampftechniken[] = this.ks.kf;
+    let kst: Kampftechniken[] = this.ks.kt;
+
 
 
     for(let e of kst) {
@@ -160,13 +167,25 @@ export class PlayerService {
       if (e.ktwextragekoppt != undefined){
         e.ktw += (e.ktwextragekoppt*map.get(e.sf));
       }
-      e.ATFK = e.ktw! + p.playerstats.MU;
-      e.PA = Math.ceil(e.ktw!/2) + (map.get(e.leiteigenschaft) - 8 / 3);
-
+      e.ATFK = e.ktw! + (p.playerstats.MU-8) /3;
+      e.ATFK = Math.round(e.ATFK);
+      e.PA = Math.ceil(e.ktw!/2) + ((map.get(e.leiteigenschaft) -8)/ 3);
+      e.PA = Math.round(e.PA);
     }
     return kst;
   }
-  // Errechnet die Basiswerte eines Spielers (Lep, Asp, ...)
+
+
+
+  getKampftechnik(p: Player, kampftechnik: string){
+      for(let i of p.kampftechniken!){
+        if(i.kampftechniken.match(kampftechnik)){
+          return i;
+        }
+      }
+      throw Error;
+  }
+// Errechnet die Basiswerte eines Spielers (Lep, Asp, ...)
   calcPlayerBaseStats(player: Player) {
     let pbs: Base = new Base(
       player.spezies.LepSpezies + player.playerstats.KO+player.playerstats.KO,

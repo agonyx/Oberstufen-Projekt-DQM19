@@ -3,4 +3,12 @@ export class Kampftechniken{
 
   }
 
+  getAT() {
+    return this.ATFK;
+  }getPA() {
+    return this.PA;
+  }getKTW(){
+    return this.ktw;
+  }
+
 }
