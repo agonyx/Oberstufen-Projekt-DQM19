@@ -23,7 +23,6 @@ export class AdvantagesDescribtionComponent implements OnInit {
     this.player = this.playerService.getPlayer(playerID);
     //Updated die Vorteile, wenn es eine Url Änderung gab
     this.route.params.subscribe((params: any) => {
-      let disadvantageID: string = String(this.route.snapshot.paramMap.get('name'));
       if(this.player){
         let advantageID: string = String(this.route.snapshot.paramMap.get('name'));
         this.player.vorteil.forEach(vorteil => {
