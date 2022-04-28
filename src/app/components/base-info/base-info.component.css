@@ -2,3 +2,7 @@
   font-family: pixel;
   src: url("/../../../assets/font/pixelfont.TTF") format("truetype");
 }
+
+.bgweite {
+  width: 950px;
+}

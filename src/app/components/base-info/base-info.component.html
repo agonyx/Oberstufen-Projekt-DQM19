@@ -1,4 +1,4 @@
-<div class="container" *ngIf="player">
+<div class="container pixel text-warning bg-dark bgweite" *ngIf="player" >
   <div class="row">
     <div class="col-3">
       <label for="playerApGesamt">Ap Gesamt:</label>
@@ -39,7 +39,7 @@
 
     </div>
     <div class="col-2">
-      <label for="playerAspMax">Asp Max:</label>
+      <label for="playerAspMax" class="pixel">Asp Max:</label>
       <output type="text" id="playerAspMax" name="playerAspMax">{{player.basestats.AspMax}}</output>
     </div>
   </div>
@@ -169,7 +169,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="table" *ngFor="let l of player.languages">
+          <tr class="table" *ngFor="let l of player.languages" class="pixel">
             <td>{{l.name}}</td>
             <td>{{l.level}}</td>
             <td *ngIf="l.MS">(MS)</td>
@@ -187,7 +187,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr class="table" *ngFor="let w of player.writings">
+        <tr class="table" *ngFor="let w of player.writings" class="pixel">
           <td>{{w.name}}</td>
         </tr>
         </tbody>
