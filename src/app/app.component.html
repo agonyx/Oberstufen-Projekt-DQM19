@@ -9,7 +9,7 @@
   <h1 class="backgroundcolor text-warning pixel"> SLF CHARACTER PLAY</h1>
     <nav class="navbar navbar-expand-lg backgroundcolor navbar pixel">
       <div class="dropdown">
-        <button class="navbar-brand dropbtn">Spieler</button>
+        <button class="navbar-brand dropbtn text-white">Spieler</button>
         <div class="dropdown-content">
           <ng-container *ngFor="let p of players">
             <button (click)="gotoPlayer(p.id)">{{p.playerPersonaldata.Name}} {{p.playerPersonaldata.Lastname}}</button>
