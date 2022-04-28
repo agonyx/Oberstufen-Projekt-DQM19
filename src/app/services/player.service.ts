@@ -28,14 +28,16 @@ export class PlayerService {
   constructor(private fertigkeitenService: FertigkeitenService, private route: ActivatedRoute, private chatService: ChatService, private ks: KampfserviceService, private invservice: InventoryService) {
     this.createData();
   }
+  // Gibt alle Spieler als Observabels wieder
   getObservabalPlayers():  Observable<Player[]>{
     let players = of(this.players)
     return players;
   }
+  // Gibt den Spieler mit der übergebenen id wieder.
   getPlayer(id: number): Player {
     return this.players[id];
   }
-
+  // Generiert Spieldaten
   createData() {
 	// Generelle Spielwerte
     let human: Spezies = new Spezies("Human",0, 5, -5, -5, 8);
@@ -164,6 +166,7 @@ export class PlayerService {
     }
     return kst;
   }
+  // Errechnet die Basiswerte eines Spielers (Lep, Asp, ...)
   calcPlayerBaseStats(player: Player) {
     let pbs: Base = new Base(
       player.spezies.LepSpezies + player.playerstats.KO+player.playerstats.KO,
@@ -198,6 +201,7 @@ export class PlayerService {
     pbs.KapMax = pbs.KapMax + player.KapBought;
     return pbs;
   }
+  // Erstellt alle Sprachen die es gibt
   creatLanguages(): Language[]{
     let languages: Language[]= []
     let garethi: Language = new Language("Garethi",0,false);
@@ -210,13 +214,14 @@ export class PlayerService {
     languages.push(thorwahlsch);
     return languages;
   }
+  // Erstellt alle Schrieften die es gibt
   creatWriting(): writing[]{
     let writings: writing[] = [];
     let KuslikerZeichen: writing = new  writing(2,"Kusliker Zeichen");
     writings.push(KuslikerZeichen);
     return writings;
   }
-  // erstellt Vorteile
+  // Erstellt alle Vorteile die es gibt
   creatVorteile(): advantages[]{
     let vorteile: advantages[] = [];
     let zauberer: advantages = new advantages("Vorteil", 25, "Zauberer", "Der Zauberer erhält als Astralenergie- Grundwert 20 AsP. Der Vorteil beinhaltet nicht die Sonderfertigkeit Tradition (siehe Regelwerk Seite 275). Diese muss einzeln erworben werden. Jeder Zauberer muss mit einer Tradition starten (eine Tradition ist eine spezielle Sonderfertigkeit). Dieser Vorteil lässt sich im späteren Spielverlauf nicht mehr erwerben.", [],1)
@@ -231,6 +236,7 @@ export class PlayerService {
     vorteile.push(flink);
     return vorteile;
   }
+  //Erstellt die Vorteile für die einzelnen Spieler, je nach angabe in der Charakter Erstellung
   creatPlayerVorteile(vorteile: advantages[],playerVorteileString: string[][]): advantages[]{
     let playerVorteile: advantages[] = [];
     vorteile.forEach((vorteil) => {
@@ -268,6 +274,7 @@ export class PlayerService {
     })
     return playerVorteile;
   }
+  // Erstellt alle Nachteile die es gibt
   creatNachteile(): advantages[]{
     let nachteile: advantages[] = [];
     let Angst: advantages = new advantages("Nachteil", -5, "Angst", "Bla blub", ["Fear"],1)
@@ -283,6 +290,7 @@ export class PlayerService {
     nachteile.push(verfruehterHoehepunkt);
     return nachteile;
   }
+  //Erstellt die Nachteile für die einzelnen Spieler, je nach angabe in der Charakter Erstellung
   creatPlayerNachteil(nachteile: advantages[],playerNachteileString: string[][]): advantages[]{
     let playerNachteile: advantages[] = [];
     nachteile.forEach((nachteil) => {
@@ -320,6 +328,7 @@ export class PlayerService {
     })
     return playerNachteile;
   }
+  //Erstellt die Sprachen für die einzelnen Spieler, je nach angabe in der Charakter Erstellung
   creatPlayerLanguages(languages: Language[],playerLanguageString: string[][]): Language[]{
     let playerLanguage: Language[] = [];
     languages.forEach((language) => {
@@ -349,6 +358,7 @@ export class PlayerService {
     })
     return playerLanguage;
   }
+  //Erstellt die Schrieften für die einzelnen Spieler, je nach angabe in der Charakter Erstellung
   creatPlayerWritings(writings: writing[],playerWritingsString: string[]): writing[]{
     let playerWritings: writing[] = [];
     writings.forEach((writing) => {
@@ -360,7 +370,7 @@ export class PlayerService {
     })
     return playerWritings;
   }
-
+  // Gibt nur die Fähigkeiten der angegebenen Kategory wieder
   getTalents(player: Player, category: string): Faehigkeiten[] {
     let saveTalents: Faehigkeiten[] = [];
     this.fertigkeitenService.fertigkeiten.forEach(element => {
@@ -376,18 +386,22 @@ export class PlayerService {
     })
     return saveTalents;
   }
+  // Errechnet die Verbleibenden Schicksalspunkte
   Schicksalspunkteverbleibend(id: number):number {
     let currentsp: number = this.getPlayer(id).spg - this.getPlayer(id).spa;
     return currentsp;
   }
+  // Methode zum ändern der Schicksalspunkte menge
   SchicksalspunkteVeraendern(a: number, id:number) {
     let b: number = this.getPlayer(id).spa;
       this.getPlayer(id).spa = b + a;
     console.log(this.getPlayer(id).spa)
   }
+  // Führt die rollTalents Methode aus dem chat Service aus
   diceRoll(talent: Faehigkeiten, player: Player) {
       this.chatService.rollTalents(talent, player)
   }
+  // Errechnet die Abenteuerpunkte aus allen Faktoren
   ApRechner(player:Player, fertigkeiten: Faehigkeiten[]): number{
     let Apa: number = 0;
     Apa += player.spezies.APKosten;
@@ -497,6 +511,7 @@ export class PlayerService {
     console.log(Apa)
     return Apa;
   }
+  // Erstellt die Talente für die einzelnen Spieler, je nach angabe in der Charakter Erstellung
   creatPlayerTalents(Fw: number[], fertigkeiten: Faehigkeiten[]): PlayerTalents[]{
     let playerTalents: PlayerTalents[] = [];
     fertigkeiten.forEach((talent,index) => {

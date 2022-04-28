@@ -14,6 +14,7 @@ export class PlayerTalentsComponent implements OnInit {
   constructor(private playerService: PlayerService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    //Ruft Spieler per Url id ab
     let id = 0;
     if(this.route.parent){
       id = Number(this.route.parent.snapshot.paramMap.get('id'));

@@ -10,10 +10,7 @@ import {Player} from "../../models/player";
 export class PlayerSelectComponent implements OnInit {
   players: Player[] = [];
   constructor(private playerService: PlayerService) { }
-
-  //get players(): Player[]{
-  //  return  this.playerService.players;
-  //}
+  // Holt alle Spieler aus dem playerService
   getOsverebalPlayers(): void{
     this.playerService.getObservabalPlayers().subscribe(players=>this.players=players)
   }

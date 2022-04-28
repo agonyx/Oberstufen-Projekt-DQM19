@@ -19,12 +19,12 @@ export class BaseInfoComponent implements OnInit {
   }
 
   ngOnInit() {
+    //Ruft Spieler per Url id ab
     let id = 0;
     if(this.route.parent){
       id = Number(this.route.parent.snapshot.paramMap.get('id'));
     }
     this.player = this.playerService.getPlayer(id);
-    console.log(this.player)
   }
 
 

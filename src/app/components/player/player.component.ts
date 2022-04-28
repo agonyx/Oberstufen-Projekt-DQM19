@@ -13,6 +13,7 @@ export class PlayerComponent implements OnInit {
   }
 
   ngOnInit() {
+    //Ruft Spieler per Url id ab
     let id = Number(this.route.snapshot.paramMap.get('id'));
     this.player = this.playerService.getPlayer(id);
   }

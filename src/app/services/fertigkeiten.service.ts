@@ -9,9 +9,11 @@ export class FertigkeitenService {
   constructor() {
     this.creatTalents();
   }
+  // Gibt eine Fertigkeit wieder
   getFertigkeit(id: number): Faehigkeiten{
     return this.fertigkeiten[id];
   }
+  //Erstellt alle Talente
   creatTalents() {
     let talents: Faehigkeiten[] = [];
     let talentb1: Faehigkeiten = new Faehigkeiten("Fliegen", ["MU", "IN","GE"],"B","b-1")
@@ -135,8 +137,4 @@ export class FertigkeitenService {
     this.fertigkeiten = talents;
 
   }
-  createBattleTechniques(){
-
-  }
-
 }

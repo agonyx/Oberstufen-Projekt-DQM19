@@ -15,13 +15,16 @@ export class WorkTalentsComponent implements OnInit {
   constructor(private playerService: PlayerService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    //Ruft Spieler per Url id ab
     let id = 0;
     if(this.route.parent?.parent){
       id = Number(this.route.parent?.parent.snapshot.paramMap.get('id'));
     }
     this.player = this.playerService.getPlayer(id);
+    //Ruft talente der work Kategorie ab
     this.workTalents = this.playerService.getTalents(this.player, "w");
   }
+  //Fürht die Metohde diceRoll aus Player Service aus
   diceRoll(talent: Faehigkeiten) {
     if(this.player){
       this.playerService.diceRoll(talent,this.player)

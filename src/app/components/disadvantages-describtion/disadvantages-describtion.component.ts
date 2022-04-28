@@ -15,6 +15,7 @@ export class DisadvantagesDescribtionComponent implements OnInit {
   constructor(private playerService: PlayerService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    //Ruft spieler per Url id ab
     let playerID = 0;
     if(this.route.parent?.parent){
       playerID = Number(this.route.parent.parent.snapshot.paramMap.get('id'));

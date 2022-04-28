@@ -13,15 +13,18 @@ export class AbilitysComponent implements OnInit {
   constructor(private playerService: PlayerService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    //Ruft Spieler per Url id ab
     let id = 0;
     if(this.route.parent){
       id = Number(this.route.parent.snapshot.paramMap.get('id'));
     }
     this.player = this.playerService.getPlayer(id);
   }
+  // Navigiert zum angecklickten Vorteil
   async gotoAdvantages(advantegename: string): Promise<void> {
     await this.router.navigate(['advanteges', advantegename], { relativeTo: this.route })
   }
+  // Navigiert zum angecklickten Nachteil
   async gotoDisadvantages(disadvantegename: string): Promise<void> {
     await this.router.navigate(['disadvanteges', disadvantegename], { relativeTo: this.route })
   }
