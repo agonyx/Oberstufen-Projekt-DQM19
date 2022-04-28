@@ -27,6 +27,9 @@ nav a.active {
 .pixel {
   font-family: pixel;
 }
+*{
+  font-family: pixel;
+}
 .bgimage{
   background-size: cover;
   width: 100%;
