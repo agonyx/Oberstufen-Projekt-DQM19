@@ -13,7 +13,7 @@
 .feedWrapper {
   background-color: #222222;
   font-family: pixel;
-  font-size: 1.2em;
+  font-size: small;
   flex: 5;
   order: 2;
   padding:20px 0px 0px 24px;
