@@ -14,9 +14,11 @@ export class PlayerComponent implements OnInit {
 
   ngOnInit() {
     //Ruft Spieler per Url id ab
-    let id = Number(this.route.snapshot.paramMap.get('id'));
-    this.player = this.playerService.getPlayer(id);
-    this.playerService.chatService.setUsername(this.player.playerPersonaldata.Name + " " +  this.player.playerPersonaldata.Lastname)
+    this.route.params.subscribe((params: any) => {
+      let id = Number(this.route.snapshot.paramMap.get('id'));
+      this.player = this.playerService.getPlayer(id);
+      this.playerService.chatService.setUsername(this.player.playerPersonaldata.Name + " " +  this.player.playerPersonaldata.Lastname)
+    })
   }
 
 }

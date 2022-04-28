@@ -12,9 +12,7 @@
         <button class="navbar-brand dropbtn">Mainmenu</button>
         <div class="dropdown-content">
           <ng-container *ngFor="let p of players">
-            <a routerLink="/player/{{p.id}}">
-              {{p.playerPersonaldata.Name}} {{p.playerPersonaldata.Lastname}}
-            </a>
+            <button (click)="gotoPlayer(p.id)">{{p.playerPersonaldata.Name}} {{p.playerPersonaldata.Lastname}}</button>
           </ng-container>
         </div>
       </div>
