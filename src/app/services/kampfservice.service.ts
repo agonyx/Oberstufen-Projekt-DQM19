@@ -25,5 +25,7 @@ export class KampfserviceService {
     this.kf.push(new Kampftechniken("Zweihandhiebwaffen", "KK", "C"));
     this.kf.push(new Kampftechniken("Zweihandschwerter", "KK", "B"));
   }
-
+    get kt(){
+    return this.kf;
+    }
 }
