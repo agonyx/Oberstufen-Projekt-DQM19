@@ -157,6 +157,7 @@ export class PlayerService {
     let kst: Kampftechniken[] = this.ks.kt;
 
 
+
     for(let e of kst) {
       e.ktw = 6;
       if (e.ktwextragekoppt != undefined){
@@ -168,6 +169,14 @@ export class PlayerService {
       e.PA = Math.round(e.PA);
     }
     return kst;
+  }
+  getKampftechnik(p: Player, kampftechnik: string){
+      for(let i of p.kampftechniken!){
+        if(i.kampftechniken.match(kampftechnik)){
+          return i;
+        }
+      }
+      throw Error;
   }
   calcPlayerBaseStats(player: Player) {
     let pbs: Base = new Base(

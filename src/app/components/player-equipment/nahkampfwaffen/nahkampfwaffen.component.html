@@ -1,1 +1,28 @@
-<p>nahkampfwaffen works!</p>
+<h2>Nahkampfwaffen</h2>
+<table>
+  <thead>
+  <th>Waffe</th>
+  <th>Kampftechnik</th>
+  <th>SB1</th>
+  <th>SB2</th>
+  <th>TP</th>
+  <th>AT MOD</th>
+  <th>PA MOD</th>
+  <th>AT</th>
+  <th>PA</th>
+  </thead>
+  <tbody>
+  <tr class="table" *ngFor="let t of nw">
+    <td>{{t.waffe}}</td>
+    <td>{{t.kampftechnik}}</td>
+    <td>{{t.schadensberechnung1}}</td>
+    <td>{{t.schadensberechnung2}}</td>
+    <td>{{t.TP}}</td>
+    <td>{{t.AT_PAMOD1}}</td>
+    <td>{{t.AT_PAMOD2}}</td>
+    <td>{{this.playerService.getKampftechnik(this.player!,t.kampftechnik).getAT()! + t.AT_PAMOD1!}}</td>
+    <td>{{this.playerService.getKampftechnik(this.player!,t.kampftechnik).getPA()! + t.AT_PAMOD2!}}</td>
+    <td><button class="btn-primary">Würfeln</button></td>
+  </tr>
+  </tbody>
+</table>

@@ -20,8 +20,12 @@ export class FernkampfwaffenComponent implements OnInit {
       id = Number(this.route.parent?.parent.snapshot.paramMap.get('id'));
     }
     this.player = this.playerService.getPlayer(id);
-    console.log(this.player.inventar)
+
     this.fw = this.player.inventar.fw;
+    for (let i of this.fw) {
+      i.fernkampf = Math.round(this.playerService.getKampftechnik(this.player,i.kampftechnik).getKTW()! + ((this.player.playerstats.FF - 8) /3));
+    }
+
   }
 
 }
